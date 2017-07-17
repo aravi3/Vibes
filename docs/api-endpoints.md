@@ -22,26 +22,25 @@
 
 - `GET /api/songs`
 - `GET /api/songs/:id`
-- `POST /api/songs/:id`
+- `POST /api/songs`
 - `PATCH /api/songs/:id`
-- `DELETE /api/notes/:id`
+- `DELETE /api/songs/:id`
 
 ### Comments
 
 - `GET /api/songs/:id/comments`
 - `POST /api/songs/:id/comments`
-- `PATCH /api/songs/:id/comments`
-- `DELETE /api/songs/:id/comments`
+- `PATCH /api/comments/:id`
+- `DELETE /api/comments/:id`
 
 ### Likes
 
-- `GET /api/songs/:id/likes`
-- `POST /api/songs/:id/likes`
-- `DELETE /api/songs/:id/likes`
+- `POST /api/songs/:id/like`
+- `DELETE /api/songs/:id/like`
 
 ### Profiles
 
 - `GET /api/users/:id`
-- `POST /api/users/:id`
+- `POST /api/users`
 - `PATCH /api/users/:id`
 - `DELETE /api/users/:id`

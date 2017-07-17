@@ -34,12 +34,13 @@ column name | data type | details
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users), indexed
 song_id     | integer   | not null, foreign key (references songs), indexed
+  * combination of user_id and song_id will be indexed and made unique
 
 ## profiles
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
+user_id     | integer   | not null, foreign key (references users), indexed, unique
 profile_img | bytea     |
 cover_img   | bytea     |
 description | string    |

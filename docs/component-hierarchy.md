@@ -18,6 +18,8 @@
 **SongsContainer**
  - SongIndex
 
+**SongsDetailContainer**
+
 **NewSongContainer**
 - NewSong
 
@@ -28,9 +30,8 @@
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
-| "/home/profile" | "ProfileContainer" |
-| "/home/songs/:songId/:userId/profile" | "ProfileContainer" |
+| "/users/:userId" | "ProfileContainer" |
 | "/home/likes" | "LikesContainer" |
-| "/home/songs" | "SongsContainer" |
-| "/home/songs/:songId" | "SongsContainer" |
-| "/home/songs/new-song" | "NewSongContainer" |
+| "/songs" | "SongsContainer" |
+| "/songs/:songId" | "SongsDetailContainer" |
+| "/songs/new" | "NewSongContainer" |
