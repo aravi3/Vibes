@@ -32,19 +32,16 @@
         song_id: 1
       }
   },
-  likes: {
-      '1': {
-        id: 1,
-        user_id: 1,
-        song_id: 1
-      }
-  },
   profile: {
     id: 1,
     user_id: 1
     image: "blah",
     description: "blah"
   },
+  genres: {
+    id: 1,
+    name: "blah"
+  }
   errors: {
     signUp: [],
     logIn: [],

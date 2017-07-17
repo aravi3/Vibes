@@ -21,12 +21,13 @@ song_id     | integer   | not null, foreign key (references songs), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-song        | bytea     | not null
+song        | string    | not null
 user_id     | integer   | not null, foreign key (references users), indexed
+genre_id    | integer   | not null, foreign key (references genres), indexed
 title       | string    | not null
 artist      | string    | not null
 genre       | string    | not null
-image       | bytea     |
+image       | string    |
 
 ## likes
 column name | data type | details
@@ -41,6 +42,12 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references users), indexed, unique
-profile_img | bytea     |
-cover_img   | bytea     |
+profile_img | string    |
+cover_img   | string    |
 description | string    |
+
+## genres
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+name        | integer   | not null

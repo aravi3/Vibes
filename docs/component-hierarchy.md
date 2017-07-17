@@ -23,6 +23,8 @@
 **NewSongContainer**
 - NewSong
 
+**NavbarContainer**
+
 ## Routes
 
 |Path   | Component   |
@@ -31,7 +33,7 @@
 | "/sign-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
 | "/users/:userId" | "ProfileContainer" |
-| "/home/likes" | "LikesContainer" |
+| "/liked" | "SongsContainer" |
 | "/songs" | "SongsContainer" |
 | "/songs/:songId" | "SongsDetailContainer" |
 | "/songs/new" | "NewSongContainer" |

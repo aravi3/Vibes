@@ -41,6 +41,5 @@
 ### Profiles
 
 - `GET /api/users/:id`
-- `POST /api/users`
 - `PATCH /api/users/:id`
 - `DELETE /api/users/:id`
