@@ -30,8 +30,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt'
-gem 'better_errors'
-gem 'binding_of_caller'
 gem 'pry-rails'
 gem 'annotate'
 
@@ -50,6 +48,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Debugging
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  #LiveReload
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rack-livereload'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
