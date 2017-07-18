@@ -7,7 +7,6 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const signup = (user) => dispatch => {
   APIUtil.signup(user).then(
     currentUser => {
-      console.log(currentUser);
       dispatch(receiveCurrentUser(currentUser));
       dispatch(clearErrors());
     },
@@ -18,7 +17,6 @@ export const signup = (user) => dispatch => {
 export const login = (user) => dispatch => {
   APIUtil.login(user).then(
     currentUser => {
-      console.log(currentUser);
       dispatch(receiveCurrentUser(currentUser));
       dispatch(clearErrors());
     },
