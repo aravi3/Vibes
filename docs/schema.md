@@ -21,12 +21,11 @@ song_id     | integer   | not null, foreign key (references songs), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-song        | string    | not null
+url         | string    | not null
 user_id     | integer   | not null, foreign key (references users), indexed
 genre_id    | integer   | not null, foreign key (references genres), indexed
 title       | string    | not null
 artist      | string    | not null
-genre       | string    | not null
 image       | string    |
 
 ## likes

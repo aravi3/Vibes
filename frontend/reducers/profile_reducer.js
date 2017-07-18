@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import { RECEIVE_PROFILE } from '../actions/profile_actions';
 
 const initialState = {};
 
@@ -7,6 +8,7 @@ const profileReducer = (state = initialState, action) => {
   let newState;
 
   switch(action.type) {
+    case RECEIVE_PROFILE:
     default:
       return state;
   }

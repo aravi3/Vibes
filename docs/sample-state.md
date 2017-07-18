@@ -4,11 +4,13 @@
     entities: {
       '1': {
         id: 1,
-        username: "blah",
-        email: "blah@blah.com"
+        username: "blah"
       }
     },
-    currentUser: 1
+    currentUser: {
+      id: 1,
+      likes: [1, 4, 5]
+    }
   },
   songs: {
     entities: {
@@ -41,12 +43,7 @@
   genres: {
     id: 1,
     name: "blah"
-  }
-  errors: {
-    signUp: [],
-    logIn: [],
-    comment: [],
-    song: []
-  }
+  },
+  errors: []
 }
 ```

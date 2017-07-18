@@ -1,7 +1,7 @@
 ## Component Hierarchy
 
-**AuthFormContainer**
- - AuthForm
+**SessionFormContainer**
+ - SessionForm
 
 **HomeContainer**
  - Home
@@ -29,8 +29,8 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/sign-up" | "AuthFormContainer" |
-| "/sign-in" | "AuthFormContainer" |
+| "/login" | "SessionFormContainer" |
+| "/signup" | "SessionFormContainer" |
 | "/home" | "HomeContainer" |
 | "/users/:userId" | "ProfileContainer" |
 | "/liked" | "SongsContainer" |

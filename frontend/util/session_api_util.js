@@ -2,7 +2,7 @@ export const signup = (user) => {
   return $.ajax({
     method: 'POST',
     url: '/api/users',
-    dataType: 'json',
+    dataType: 'JSON',
     data: {
       user: {
         email: user.email,
@@ -17,7 +17,7 @@ export const login = (user) => {
   return $.ajax({
     method: 'POST',
     url: '/api/session',
-    dataType: 'json',
+    dataType: 'JSON',
     data: {
       user: {
         username: user.username,
