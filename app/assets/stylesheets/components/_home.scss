@@ -1,0 +1,24 @@
+.hero {
+  margin: 0 auto;
+  height: 800px;
+}
+
+.side-pane {
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+}
+
+.col-left {
+  flex-grow: 1;
+}
+
+.col-right {
+  flex-grow: 1;
+}
+
+.col-middle {
+  flex-grow: 3;
+}

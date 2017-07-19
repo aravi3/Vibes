@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { login, logout } from '../../actions/session_actions';
 import Navbar from './navbar';
 import { selectLoggedIn } from '../../reducers/selectors';
 
@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    login: user => dispatch(login(user)),
     logout: () => dispatch(logout())
   };
 };

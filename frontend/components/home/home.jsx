@@ -7,15 +7,14 @@ class Home extends React.Component {
   }
 
   render() {
-
     return (
-      <div>
-        <h1>Welcome to Vibes</h1>
-        <Link to="/signup">Sign up for free</Link>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <Link to="/login">Sign in</Link>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      </div>
+      <ul className="home">
+        <li className="col-left">&nbsp;</li>
+        <li className="col-middle">
+          <img className="hero" src="assets/chance.jpg" />
+        </li>
+        <li className="col-right">&nbsp;</li>
+      </ul>
     );
   }
 }

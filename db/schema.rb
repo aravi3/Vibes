@@ -10,10 +10,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717213130) do
+ActiveRecord::Schema.define(version: 20170719064232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",       null: false
+    t.integer  "user_id",    null: false
+    t.integer  "song_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "song_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "song_id"], name: "index_likes_on_user_id_and_song_id", unique: true, using: :btree
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.string   "profile_img"
+    t.string   "cover_img"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
+  end
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "url",        null: false
+    t.integer  "user_id",    null: false
+    t.integer  "genre_id",   null: false
+    t.string   "title",      null: false
+    t.string   "artist",     null: false
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false

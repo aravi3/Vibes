@@ -65,33 +65,32 @@ class SignupForm extends React.Component {
     });
 
     return (
-      <div>
-        <h1>Create an account</h1>
+      <form className="signup-form" onSubmit={this.signupUser}>
+        <label><i className="fa fa-envelope"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input onChange={this.setEmail} placeholder="email" type="text" value={this.state.email} />
+        </label>
 
-        <form onSubmit={this.signupUser}>
-          <label>Enter your email
-            <input onChange={this.setEmail} type="text" value={this.state.email} />
-          </label>
+        <br /><br />
 
-          <br />
+        <label><i className="fa fa-user"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input onChange={this.setUsername} placeholder="username" type="text" value={this.state.username} />
+        </label>
 
-          <label>Select a username
-            <input onChange={this.setUsername} type="text" value={this.state.username} />
-          </label>
+        <br /><br />
 
-          <br />
+        <label><i className="fa fa-lock"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input onChange={this.setPassword} placeholder="password" type="password" value={this.state.password} />
+        </label>
 
-          <label>Select a password
-            <input onChange={this.setPassword} type="password" value={this.state.password} />
-          </label>
+        <br /><br />
 
-          <br />
+        <input type="submit"></input>
 
-          <input type="submit"></input>
-
-          {errors}
-        </form>
-      </div>
+        {errors}
+      </form>
     );
   }
 }

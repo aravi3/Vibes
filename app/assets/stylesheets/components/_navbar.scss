@@ -1,4 +1,35 @@
 .main-nav {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: space-between;
+  height: 45px;
+  width: 100%;
+  background-color: $lightest-black;
+}
+
+.auth-buttons {
+  display: flex;
+}
+
+.logo {
+  margin-left: 107px;
+  width: 125px;
+  height: 41px;
+  border-bottom: 2px solid $lightest-black;
+  border-top: 2px solid $lightest-black;
+}
+
+.nav-button {
+  color: $white;
+  padding: 20px;
+  font-family: $sans-serif;
+}
+
+.last-button {
+  margin-right: 100px;
+}
+
+.nav-button:hover {
+  text-decoration: underline;
 }

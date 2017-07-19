@@ -1,0 +1,15 @@
+.signup-form {
+  font-family: $sans-serif;
+  color: $white;
+}
+
+input[type="text"],
+input[type="password"] {
+  border-bottom: 1px solid $white;
+  background: $lightest-black;
+}
+
+.login-form {
+  font-family: $sans-serif;
+  color: $white;
+}
