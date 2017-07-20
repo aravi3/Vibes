@@ -41,7 +41,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="assets/logo.png" alt="logo"/>
+          <img className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li className="auth-buttons">
@@ -57,7 +57,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="assets/logo.png" alt="logo"/>
+          <img className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li className="auth-buttons">
