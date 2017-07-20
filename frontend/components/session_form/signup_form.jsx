@@ -65,7 +65,7 @@ class SignupForm extends React.Component {
     });
 
     return (
-      <form className="signup-form" onSubmit={this.signupUser}>
+      <form className="signup-form">
         <label><i className="fa fa-envelope"></i>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input onChange={this.setEmail} placeholder="email" type="text" value={this.state.email} />
@@ -86,10 +86,12 @@ class SignupForm extends React.Component {
         </label>
 
         <br /><br />
-
-        <input type="submit"></input>
-
         {errors}
+        <br />
+
+        <center>
+          <button className="splash-button" onClick={this.signupUser}>Create Account!</button>
+        </center>
       </form>
     );
   }

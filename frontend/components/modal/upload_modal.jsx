@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import SignupFormContainer from '../session_form/signup_form_container';
+import UploadFormContainer from '../upload/upload_form_container';
 
 const customStyles = {
   overlay : {
@@ -14,8 +14,9 @@ const customStyles = {
   },
   content : {
     position                   : 'absolute',
+    width                      : '750px',
     top                        : '20%',
-    left                       : '40%',
+    left                       : '20%',
     right                      : 'auto',
     bottom                     : 'auto',
     border                     : '1px solid #ccc',
@@ -29,7 +30,7 @@ const customStyles = {
   }
 };
 
-class SignupModal extends React.Component {
+class UploadModal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -58,20 +59,20 @@ class SignupModal extends React.Component {
 
   render() {
     return (
-      <div className="nav-button last-button">
-        <button onClick={this.openModal}>Create Account</button>
+      <div className="nav-button">
+        <button onClick={this.openModal}>Upload</button>
 
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Signup Modal">
+          contentLabel="Upload Modal">
 
-          <SignupFormContainer />
+          <UploadFormContainer />
         </Modal>
       </div>
     );
   }
 }
 
-export default SignupModal;
+export default UploadModal;

@@ -9,6 +9,7 @@
     },
     currentUser: {
       id: 1,
+      username: "blah",
       likes: [1, 4, 5]
     }
   },

@@ -1,5 +1,6 @@
 .main-nav {
   position: fixed;
+  z-index: 100;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -13,7 +14,7 @@
 }
 
 .logo {
-  margin-left: 107px;
+  margin-left: 123px;
   width: 125px;
   height: 41px;
   border-bottom: 2px solid $lightest-black;
@@ -27,7 +28,7 @@
 }
 
 .last-button {
-  margin-right: 100px;
+  margin-right: 108px;
 }
 
 .nav-button:hover {

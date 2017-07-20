@@ -4,7 +4,7 @@
 
 [Trello link][trello]
 
-[heroku]: http://www.herokuapp.com
+[heroku]: https://vibes21.herokuapp.com/#/
 [trello]: https://trello.com/b/gAmSDzrv/vibes
 
 ## Minimum Viable Product

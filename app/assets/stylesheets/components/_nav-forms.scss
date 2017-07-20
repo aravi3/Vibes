@@ -1,0 +1,65 @@
+.signup-form {
+  font-family: $sans-serif;
+  color: $white;
+}
+
+input[type="text"],
+input[type="password"] {
+  border-bottom: 1px solid $white;
+  background: $lightest-black;
+}
+
+.login-form {
+  font-family: $sans-serif;
+  color: $white;
+}
+
+.upload-form-container {
+  font-family: $sans-serif;
+  color: $white;
+}
+
+.genre-dropdown {
+  width: 140px;
+  padding: 2px;
+  font-size: 15px;
+  font-family: $sans-serif;
+}
+
+.upload-form-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.upload-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.upload-image {
+  width: 200px;
+  height: 200px;
+  border: 4px solid $black;
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+}
+
+.splash-button {
+  background-color: $orange;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px black;
+}
+
+.splash-button:hover {
+  box-shadow: inset 2px 2px 1px black;
+}
+
+.attach-file {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.song-title {
+  width: 200px;
+}

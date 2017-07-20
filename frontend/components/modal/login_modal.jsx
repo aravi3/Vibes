@@ -14,6 +14,7 @@ const customStyles = {
   },
   content : {
     position                   : 'absolute',
+    zIndex                     : '100',
     top                        : '20%',
     left                       : '40%',
     right                      : 'auto',
@@ -48,6 +49,7 @@ class LoginModal extends React.Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+    this.props.clearErrors();
   }
 
   openModal() {

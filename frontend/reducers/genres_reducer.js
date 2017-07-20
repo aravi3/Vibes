@@ -9,6 +9,14 @@ const genresReducer = (state = initialState, action) => {
 
   switch(action.type) {
     case RECEIVE_GENRES:
+      newState = merge({}, state);
+      action.genres.forEach(genre => {
+        newState[genre.id] = {
+          id: genre.id,
+          name: genre.name
+        };
+      });
+      return newState;
     default:
       return state;
   }

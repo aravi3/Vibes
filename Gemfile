@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'pry-rails'
 gem 'annotate'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TrendingSongs from './trending_songs';
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,7 +12,15 @@ class Home extends React.Component {
       <ul className="home">
         <li className="col-left">&nbsp;</li>
         <li className="col-middle">
-          <img className="hero" src="assets/chance.jpg" />
+          <div className="hero">
+            <h1 className="hero-main">Connect on Vibes</h1>
+            <h2 className="hero-sub">Stream and share <br /> music from artists <br /> around the world </h2>
+            <button className="hero-button">Start exploring</button>
+          </div>
+          <br /><br /><br />
+          <center>
+            <TrendingSongs />
+          </center>
         </li>
         <li className="col-right">&nbsp;</li>
       </ul>

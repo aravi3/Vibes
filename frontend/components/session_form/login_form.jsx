@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
     });
 
     return (
-      <form className="login-form" onSubmit={this.loginUser}>
+      <form className="login-form">
         <label><i className="fa fa-user"></i>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <input onChange={this.setUsername} placeholder="username" type="text" value={this.state.username}/>
@@ -69,10 +69,12 @@ class LoginForm extends React.Component {
         </label>
 
         <br /><br />
-
-        <input type="submit"></input>
-
         {errors}
+        <br />
+
+        <center>
+          <button className="splash-button" onClick={this.loginUser}>Log in!</button>
+        </center>
       </form>
     );
   }

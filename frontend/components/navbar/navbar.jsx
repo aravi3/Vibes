@@ -1,6 +1,7 @@
 import React from 'react';
 import SignupModal from '../modal/signup_modal';
 import LoginModal from '../modal/login_modal';
+import UploadModal from '../modal/upload_modal';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class Navbar extends React.Component {
   demoLogin() {
     const guest = {
       email: "guest@demo.com",
-      username: "Guest",
+      username: "GuestUser",
       password: "demoaccount"
     };
 
@@ -40,13 +41,13 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="assets/logo.png" />
+          <img className="logo" src="assets/logo.png" alt="logo"/>
         </li>
 
         <li className="auth-buttons">
           <button className="nav-button" onClick={this.demoLogin}>Demo Sign In</button>
-          <LoginModal />
-          <SignupModal />
+          <LoginModal clearErrors={this.props.clearErrors}/>
+          <SignupModal clearErrors={this.props.clearErrors}/>
         </li>
       </ul>
     );
@@ -56,11 +57,12 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="assets/logo.png" />
+          <img className="logo" src="assets/logo.png" alt="logo"/>
         </li>
 
-        <li>
-          <button className="nav-button">Upload</button>
+        <li className="auth-buttons">
+          <button className="nav-button">{this.props.username}</button>
+          <UploadModal clearErrors={this.props.clearErrors}/>
           <button className="nav-button last-button" onClick={this.logoutUser}>Log Out</button>
         </li>
       </ul>
