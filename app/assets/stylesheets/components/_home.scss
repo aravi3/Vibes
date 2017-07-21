@@ -49,6 +49,15 @@
   justify-content: center;
 }
 
+.trending-songs-container {
+  display: flex;
+}
+
+.trending-songs {
+  width: 225px;
+  height: 225px;
+}
+
 .col-left {
   flex-grow: 1;
 }

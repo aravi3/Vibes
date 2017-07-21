@@ -7,7 +7,8 @@ class LoginForm extends React.Component {
 
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      loading: false
     };
 
     this.setUsername = this.setUsername.bind(this);
@@ -18,6 +19,9 @@ class LoginForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.loggedIn) {
       this.props.history.push('/');
+    }
+    else if (this.props.errors) {
+      this.setState({ loading: false });
     }
   }
 
@@ -46,6 +50,7 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user);
+    this.setState({ loading: true });
   }
 
   render() {
@@ -58,14 +63,14 @@ class LoginForm extends React.Component {
       <form className="login-form">
         <label><i className="fa fa-user"></i>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input onChange={this.setUsername} placeholder="username" type="text" value={this.state.username}/>
+          <input disabled={this.state.loading} onChange={this.setUsername} placeholder="username" type="text" value={this.state.username}/>
         </label>
 
         <br /><br />
 
         <label><i className="fa fa-lock"></i>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <input onChange={this.setPassword} placeholder="password" type="password" value={this.state.password}/>
+          <input disabled={this.state.loading} onChange={this.setPassword} placeholder="password" type="password" value={this.state.password}/>
         </label>
 
         <br /><br />
@@ -73,7 +78,7 @@ class LoginForm extends React.Component {
         <br />
 
         <center>
-          <button className="splash-button" onClick={this.loginUser}>Log in!</button>
+          <button disabled={this.state.loading} className="splash-button" onClick={this.loginUser}>Log in!</button>
         </center>
       </form>
     );

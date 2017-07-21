@@ -6,13 +6,14 @@ class UploadForm extends React.Component {
     super(props);
 
     this.state = {
-      url: "",
+      track: null,
       user_id: this.props.user.id,
       genre_id: "",
       title: "",
       artist: this.props.user.username,
-      image: "",
-      image_preview: ""
+      image: null,
+      image_preview: "",
+      loading: false
     };
 
     this.setSong = this.setSong.bind(this);
@@ -22,6 +23,17 @@ class UploadForm extends React.Component {
     this.uploadSong = this.uploadSong.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.song !== this.props.song) {
+      this.props.closeModal();
+      let path = `/api/songs/${nextProps.song}`;
+      this.props.history.push(path);
+    }
+    else if (this.props.errors) {
+      this.setState({ loading: false });
+    }
+  }
+
   componentDidMount() {
     this.props.fetchAllGenres();
   }
@@ -29,7 +41,7 @@ class UploadForm extends React.Component {
   setGenre(e) {
     let genre_id = "";
 
-    if (e.target.value !== "Select Genre") {
+    if (e.target.value !== "invalid") {
       genre_id = e.target.value;
     }
 
@@ -46,17 +58,16 @@ class UploadForm extends React.Component {
   }
 
   setSong(e) {
-    const file = e.target.files[0];
-    this.setState({ url: file });
+    const file = e.currentTarget.files[0];
+    this.setState({ track: file });
   }
 
   setImage(e) {
-    const file = e.target.files[0];
+    const file = e.currentTarget.files[0];
     var fileReader = new FileReader();
 
-    fileReader.onload = () => {
+    fileReader.onloadend = () => {
       this.setState({ image: file, image_preview: fileReader.result });
-      console.log(file);
     };
 
     if (file) {
@@ -66,22 +77,17 @@ class UploadForm extends React.Component {
 
   uploadSong(e) {
     e.preventDefault();
-    
-    const url = this.state.url;
-    const userId = this.state.user_id;
-    const genreId = this.state.genre_id;
-    const title = this.state.title;
-    const artist = this.state.artist;
-    const image = this.state.image;
 
-    const song = {
-      url: url,
-      user_id: userId,
-      genre_id: genreId,
-      title: title,
-      artist: artist,
-      image: image
-    };
+    var formData = new FormData();
+    formData.append("song[track]", this.state.track);
+    formData.append("song[user_id]", this.state.user_id);
+    formData.append("song[genre_id]", this.state.genre_id);
+    formData.append("song[title]", this.state.title);
+    formData.append("song[artist]", this.state.artist);
+    formData.append("song[image]", this.state.image);
+
+    this.props.createSong(formData);
+    this.setState({ loading: true });
   }
 
   render() {
@@ -98,22 +104,24 @@ class UploadForm extends React.Component {
       <form className="upload-form-container">
         <section className="upload-form">
           <div className="upload-form-left">
-            <div style={{backgroundImage: `url(${this.state.image_preview})`}} className="upload-image"></div>
+            <div style={{backgroundImage: `url(${this.state.image_preview})`}} className="upload-image">
+              {this.state.loading ? <div className="loader"></div> : ""}
+            </div>
 
             <br />
 
-            <i className="fa fa-cloud-upload"></i>
-            <input type="file" className="attach-file" onChange={this.setImage}/>
+            <i className="fa fa-picture-o"></i>
+            <input disabled={this.state.loading} type="file" className="attach-file" onChange={this.setImage}/>
 
           </div>
 
           <div className="upload-form-right">
-            <input className="song-title" onChange={this.setTitle} placeholder="title" type="text" value={this.state.title}/>
+            <input disabled={this.state.loading} className="song-title" onChange={this.setTitle} placeholder="title" type="text" value={this.state.title}/>
 
             <br /><br /><br />
 
-              <select onChange={this.setGenre} className="genre-dropdown">
-                <option selected="selected">Select Genre</option>
+              <select disabled={this.state.loading} onChange={this.setGenre} className="genre-dropdown">
+                <option value="invalid">Select Genre</option>
                 {genres}
               </select>
 
@@ -121,21 +129,24 @@ class UploadForm extends React.Component {
 
             <center>
               <i className="fa fa-music"></i>
-              <input type="file" className="attach-file" onChange={this.setSong}/>
+              <input disabled={this.state.loading} type="file" className="attach-file" onChange={this.setSong}/>
             </center>
 
             <br /><br />
-            {errors}
           </div>
         </section>
 
+        <center>
+          {errors}
+        </center>
+
         <br /><br />
         <center>
-          <button className="splash-button" onClick={this.uploadSong}>Upload!</button>
+          <button disabled={this.state.loading} className="splash-button" onClick={this.uploadSong}>Upload!</button>
         </center>
       </form>
     );
   }
 }
 
-export default UploadForm;
+export default withRouter(UploadForm);

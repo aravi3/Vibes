@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TrendingSongs from './trending_songs';
+import TrendingSongsContainer from './trending_songs_container';
 
 class Home extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Home extends React.Component {
           </div>
           <br /><br /><br />
           <center>
-            <TrendingSongs />
+            <TrendingSongsContainer />
           </center>
         </li>
         <li className="col-right">&nbsp;</li>

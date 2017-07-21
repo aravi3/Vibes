@@ -14,7 +14,7 @@ const customStyles = {
   },
   content : {
     position                   : 'absolute',
-    width                      : '750px',
+    width                      : '625px',
     top                        : '20%',
     left                       : '20%',
     right                      : 'auto',
@@ -25,8 +25,7 @@ const customStyles = {
     WebkitOverflowScrolling    : 'touch',
     borderRadius               : '4px',
     outline                    : 'none',
-    padding                    : '20px'
-
+    paddingTop                 : '50px'
   }
 };
 
@@ -68,7 +67,7 @@ class UploadModal extends React.Component {
           style={customStyles}
           contentLabel="Upload Modal">
 
-          <UploadFormContainer />
+          <UploadFormContainer closeModal={this.closeModal}/>
         </Modal>
       </div>
     );

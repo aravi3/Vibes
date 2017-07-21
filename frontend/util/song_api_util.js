@@ -18,16 +18,9 @@ export const createSong = (song) => {
     method: 'POST',
     url: '/api/songs',
     dataType: 'JSON',
-    data: {
-      song: {
-        url: song.url,
-        user_id: song.user_id,
-        genre_id: song.genre_id,
-        title: song.title,
-        artist: song.artist,
-        image: song.image
-      }
-    }
+    contentType: false,
+    processData: false,
+    data: song
   });
 };
 

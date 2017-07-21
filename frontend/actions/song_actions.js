@@ -52,7 +52,7 @@ export const fetchSong = (id) => dispatch => {
       dispatch(receiveSong(resp));
       dispatch(clearErrors());
     },
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors([err.statusText]))
   );
 };
 
@@ -62,7 +62,7 @@ export const createSong = (song) => dispatch => {
       dispatch(receiveSong(resp));
       dispatch(clearErrors());
     },
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors([err.statusText]))
   );
 };
 
@@ -72,6 +72,6 @@ export const deleteSong = (id) => dispatch => {
       dispatch(removeSong(resp));
       dispatch(clearErrors());
     },
-    err => dispatch(receiveErrors(err))
+    err => dispatch(receiveErrors([err.statusText]))
   );
 };
