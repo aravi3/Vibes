@@ -1,15 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class TrendingSongs extends React.Component {
   constructor(props) {
     super(props);
 
     this.playSong = this.playSong.bind(this);
+    this.showSongPage = this.showSongPage.bind(this);
+  }
+
+  showSongPage(id) {
+    return e => this.props.history.push(`/api/songs/${id}`);
   }
 
   playSong(song) {
-    return e => this.props.receiveSong(song);
+    return e => {
+      e.stopPropagation();
+      this.props.receiveSong(song);
+    };
   }
 
   componentDidMount() {
@@ -19,11 +27,19 @@ class TrendingSongs extends React.Component {
   render() {
 
     let firstRow = this.props.songs.slice(0, 4).map((song, idx) => {
-      return (<div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-upper-${idx}`}><img onClick={this.playSong(song)} className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/></div>);
+      return (<button onClick={this.showSongPage(song.id)} key={`trending-upper-button-${idx}`}>
+                <div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-upper-${idx}`}>
+                  <img onClick={this.playSong(song)} className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                </div>
+              </button>);
     });
 
     let secondRow = this.props.songs.slice(4, 8).map((song, idx) => {
-      return (<div style={{backgroundImage: `url(${song.image})`}} onClick={this.playSong(song)} className="trending-songs" key={`trending-lower-${idx}`}><img className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/></div>);
+      return (<Link key={`trending-lower-link-${idx}`} to={`/api/songs/${song.id}`}>
+                <div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-lower-${idx}`}>
+                  <img onClick={this.playSong(song)} className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                </div>
+              </Link>);
     });
 
     return (
@@ -42,4 +58,4 @@ class TrendingSongs extends React.Component {
   }
 }
 
-export default TrendingSongs;
+export default withRouter(TrendingSongs);
