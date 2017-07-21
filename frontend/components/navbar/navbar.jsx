@@ -2,6 +2,7 @@ import React from 'react';
 import SignupModal from '../modal/signup_modal';
 import LoginModal from '../modal/login_modal';
 import UploadModal from '../modal/upload_modal';
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class Navbar extends React.Component {
         </li>
 
         <li className="auth-buttons">
-          <button className="nav-button">{this.props.username}</button>
+          <Link to={`/api/users/${this.props.currentUser.id}`} className="nav-button">{this.props.currentUser.username}</Link>
           <UploadModal clearErrors={this.props.clearErrors}/>
           <button className="nav-button last-button" onClick={this.logoutUser}>Log Out</button>
         </li>

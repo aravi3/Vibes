@@ -5,7 +5,7 @@ import { selectLoggedIn } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    username: state.users.currentUser.username,
+    currentUser: state.users.currentUser,
     loggedIn: selectLoggedIn(state.users)
   };
 };
