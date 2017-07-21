@@ -10,10 +10,6 @@ class AudioPlayer extends React.Component {
     this.remountCount = 0;
   }
 
-  componentDidMount() {
-
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentSong !== this.props.currentSong) {
       if (this.audioComponent) {
@@ -29,19 +25,17 @@ class AudioPlayer extends React.Component {
       width: `${screen.width}px`,
       position: 'fixed',
       bottom: '0',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      opacity: '0.95'
     };
-
-    const currentSongName = this.props.songs[this.props.currentSong].title;
-    const currentSongSrc = this.props.songs[this.props.currentSong].track;
 
     return (
         <Audio
           key={this.remountCount}
           style={audioStyles}
           autoPlay={true}
-          playlist={[{name: currentSongName, src: currentSongSrc}]}
-          ref={audioComponent => { this.audioComponent = audioComponent;}}
+          playlist={this.props.playlist}
+          ref={audioComponent => {this.audioComponent = audioComponent;}}
         />
     );
   }

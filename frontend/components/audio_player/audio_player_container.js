@@ -1,11 +1,12 @@
 import { connect } from 'react-redux';
 import AudioPlayer from './audio_player';
-import { selectAllSongs } from '../../reducers/selectors';
+import { selectAllSongs, selectPlaylist } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    songs: state.songs.entities,
-    currentSong: state.songs.currentSong
+    songs: selectAllSongs(state.songs.entities),
+    currentSong: state.songs.currentSong,
+    playlist: selectPlaylist(state.songs.entities, state.songs.currentSong)
   };
 };
 
