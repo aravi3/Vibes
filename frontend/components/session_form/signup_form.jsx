@@ -90,7 +90,7 @@ class SignupForm extends React.Component {
         <br />
 
         <center>
-          <button className="splash-button" onClick={this.signupUser}>Create Account!</button>
+          <button className="splash-button" onClick={this.signupUser}>Create Account</button>
         </center>
       </form>
     );

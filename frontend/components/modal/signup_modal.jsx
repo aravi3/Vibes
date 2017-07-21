@@ -40,10 +40,11 @@ class SignupModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
 
-    window.globalOpenModal = () => {
+    window.globalSignupModal = () => {
         this.setState({modalIsOpen: true});
       };
-      window.globalOpenModal = window.globalOpenModal.bind(this);
+
+    window.globalSignupModal = window.globalSignupModal.bind(this);
   }
 
   closeModal() {

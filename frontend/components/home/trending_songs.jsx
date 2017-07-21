@@ -12,26 +12,26 @@ class TrendingSongs extends React.Component {
 
   render() {
 
-    let firstRow = this.props.songs.map((song, idx) => {
-      return (<img className="trending-songs" key={idx} src={song.image} />);
+    let firstRow = this.props.songs.slice(0, 4).map((song, idx) => {
+      return (<div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-upper-${idx}`}><img className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/></div>);
+    });
+
+    let secondRow = this.props.songs.slice(4, 8).map((song, idx) => {
+      return (<div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-lower-${idx}`}><img className="play-button" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/></div>);
     });
 
     return (
-      <div>
-        <p className="trending-songs-header">
-          Hear what's trending in the Vibes community
-        </p>
+      <section className="trending-songs-container">
+        <div className="trending-songs-upper">
+          {firstRow}
+        </div>
 
-        <br />
+        <br /><br /><br />
 
-        <section className="trending-songs-container">
-          <div className="trending-songs-upper">
-            {firstRow}
-          </div>
-          <div className="trending-songs-lower">
-          </div>
-        </section>
-      </div>
+        <div className="trending-songs-lower">
+          {secondRow}
+        </div>
+      </section>
     );
   }
 }

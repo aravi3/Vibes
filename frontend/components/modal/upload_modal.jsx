@@ -40,10 +40,11 @@ class UploadModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
 
-    window.globalOpenModal = () => {
+    window.globalUploadModal = () => {
         this.setState({modalIsOpen: true});
       };
-      window.globalOpenModal = window.globalOpenModal.bind(this);
+
+    window.globalUploadModal = window.globalUploadModal.bind(this);
   }
 
   closeModal() {

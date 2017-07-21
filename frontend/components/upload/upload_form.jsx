@@ -142,7 +142,7 @@ class UploadForm extends React.Component {
 
         <br /><br />
         <center>
-          <button disabled={this.state.loading} className="splash-button" onClick={this.uploadSong}>Upload!</button>
+          <button disabled={this.state.loading} className="splash-button" onClick={this.uploadSong}>Upload</button>
         </center>
       </form>
     );

@@ -41,10 +41,11 @@ class LoginModal extends React.Component {
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
 
-    window.globalOpenModal = () => {
+    window.globalLoginModal = () => {
         this.setState({modalIsOpen: true});
       };
-      window.globalOpenModal = window.globalOpenModal.bind(this);
+
+    window.globalLoginModal = window.globalLoginModal.bind(this);
   }
 
   closeModal() {
