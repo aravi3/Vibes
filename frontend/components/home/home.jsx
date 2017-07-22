@@ -10,7 +10,8 @@ class Home extends React.Component {
     this.openSignupModal = this.openSignupModal.bind(this);
   }
 
-  openSignupModal() {
+  openSignupModal(e) {
+    e.preventDefault();
     window.globalSignupModal();
   }
 

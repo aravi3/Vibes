@@ -5,6 +5,7 @@ import LoginFormContainer from './session_form/login_form_container';
 import NavbarContainer from './navbar/navbar_container';
 import HomeContainer from './home/home_container';
 import AudioPlayerContainer from './audio_player/audio_player_container';
+import SongIndexContainer from './song_list/song_index_container';
 import { Route } from 'react-router-dom';
 
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
     <Route exact path="/" component={HomeContainer} />
     <br /><br /><br />
     <Route path="/" component={AudioPlayerContainer} />
+    <Route exact path="/api/songs" component={SongIndexContainer} />
   </div>
 );
 

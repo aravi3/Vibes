@@ -29,13 +29,39 @@ class Navbar extends React.Component {
   }
 
   demoLogin() {
-    const guest = {
+    const guest1 = {
       email: "guest@demo.com",
       username: "GuestUser",
       password: "demoaccount"
     };
 
-    this.props.login(guest);
+    const guest2 = {
+      email: "guest2@demo.com",
+      username: "GuestUser2",
+      password: "demoaccount2"
+    };
+
+    const guest3 = {
+      email: "guest3@demo.com",
+      username: "GuestUser3",
+      password: "demoaccount3"
+    };
+
+    const guest4 = {
+      email: "guest4@demo.com",
+      username: "GuestUser4",
+      password: "demoaccount4"
+    };
+
+    const guest5 = {
+      email: "guest5@demo.com",
+      username: "GuestUser5",
+      password: "demoaccount5"
+    };
+
+    const guestArray = [guest1, guest2, guest3, guest4, guest5];
+    const rand = guestArray[Math.floor(Math.random() * guestArray.length)];
+    this.props.login(rand);
   }
 
   userLoggedOut() {

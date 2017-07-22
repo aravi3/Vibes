@@ -120,10 +120,10 @@ class UploadForm extends React.Component {
 
             <br /><br /><br />
 
-              <select disabled={this.state.loading} onChange={this.setGenre} className="genre-dropdown">
-                <option value="invalid">Select Genre</option>
-                {genres}
-              </select>
+            <select disabled={this.state.loading} onChange={this.setGenre} className="genre-dropdown">
+              <option value="invalid">Select Genre</option>
+              {genres}
+            </select>
 
             <br /><br /><br />
 

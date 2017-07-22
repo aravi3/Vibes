@@ -1,0 +1,51 @@
+.song-index {
+  display: flex;
+  justify-content: center;
+}
+
+.index-header-container {
+  display: flex;
+  font-family: $sans-serif;
+  color: $black;
+  font-size: 15px;
+  justify-content: space-between;
+}
+
+.index-header-left {
+  padding-right: 350px;
+}
+
+.index-header-mid {
+  padding-right: 250px;
+}
+
+.index-header-right {
+}
+
+.index-col-left {
+  flex-grow: 1;
+}
+
+.index-col-middle {
+  flex-grow: 2.5;
+}
+
+.index-col-right {
+  flex-grow: 1;
+}
+
+.index-listing-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+select {
+  border: 1px solid $orange;
+  font-size: 15px;
+  font-family: $sans-serif;
+  color: $orange;
+  padding-left: 10px;
+  padding-right: 50px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

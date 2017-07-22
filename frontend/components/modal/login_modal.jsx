@@ -55,6 +55,7 @@ class LoginModal extends React.Component {
 
   openModal() {
     this.setState({ modalIsOpen: true });
+    this.props.clearErrors();
   }
 
 
