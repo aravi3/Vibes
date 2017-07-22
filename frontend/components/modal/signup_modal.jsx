@@ -10,7 +10,8 @@ const customStyles = {
     left              : 0,
     right             : 0,
     bottom            : 0,
-    backgroundColor   : 'rgba(255, 255, 255, 0.75)'
+    backgroundColor   : 'rgba(255, 255, 255, 0.75)',
+    zIndex            : '100'
   },
   content : {
     position                   : 'absolute',
@@ -25,7 +26,6 @@ const customStyles = {
     borderRadius               : '4px',
     outline                    : 'none',
     padding                    : '20px'
-
   }
 };
 
@@ -36,6 +36,10 @@ class SignupModal extends React.Component {
     this.state = {
       modalIsOpen: false
     };
+
+    if (this.props.bottomOfHome) {
+      this.setState({modalIsOpen: true});
+    }
 
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);

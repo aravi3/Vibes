@@ -8,6 +8,7 @@ class Home extends React.Component {
     super(props);
 
     this.openSignupModal = this.openSignupModal.bind(this);
+    <SignupModal />;
   }
 
   openSignupModal(e) {

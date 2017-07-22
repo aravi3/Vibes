@@ -1,14 +1,16 @@
 .song-index {
   display: flex;
   justify-content: center;
+  font-family: $sans-serif;
 }
 
 .index-header-container {
   display: flex;
-  font-family: $sans-serif;
   color: $black;
   font-size: 15px;
   justify-content: space-between;
+  border-bottom: 1px solid $black;
+  align-items: center;
 }
 
 .index-header-left {
@@ -17,9 +19,6 @@
 
 .index-header-mid {
   padding-right: 250px;
-}
-
-.index-header-right {
 }
 
 .index-col-left {
@@ -48,4 +47,46 @@ select {
   padding-right: 50px;
   padding-top: 3px;
   padding-bottom: 3px;
+}
+
+.track-listing-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.track-listing-image {
+  width: 260px;
+  height: 250px;
+  background-size: 260px 250px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.track-listing-image:hover {
+  opacity: 0.7;
+  .play-button {
+    visibility: visible;
+  }
+}
+
+.track-listing-left-item {
+  position: relative;
+}
+
+.track-number {
+  position: absolute;
+  top: 110px;
+}
+
+.song-details {
+  font-family: $main-text;
+  font-size: 30px;
+  position: absolute;
+  top: 80px;
+  left: 365px;
+  width: 100%;
+}
+
+.song-artist {
+  color: $lightest-black;
 }

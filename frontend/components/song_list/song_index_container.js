@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAllSongs } from '../../actions/song_actions';
+import { fetchAllSongs, receiveSong } from '../../actions/song_actions';
 import { fetchAllGenres } from '../../actions/genre_actions';
 import { selectAllSongs, selectAllGenres } from '../../reducers/selectors';
 import SongIndex from './song_index';
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    receiveSong: (song) => dispatch(receiveSong(song)),
     fetchAllGenres: () => dispatch(fetchAllGenres()),
     fetchAllSongs: () => dispatch(fetchAllSongs())
   };

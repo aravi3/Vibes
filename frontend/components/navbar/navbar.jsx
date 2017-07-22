@@ -2,7 +2,7 @@ import React from 'react';
 import SignupModal from '../modal/signup_modal';
 import LoginModal from '../modal/login_modal';
 import UploadModal from '../modal/upload_modal';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class Navbar extends React.Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class Navbar extends React.Component {
     this.userLoggedIn = this.userLoggedIn.bind(this);
     this.userLoggedOut = this.userLoggedOut.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.redirectHome = this.redirectHome.bind(this);
   }
 
   logoutUser() {
@@ -64,11 +65,15 @@ class Navbar extends React.Component {
     this.props.login(rand);
   }
 
+  redirectHome() {
+    this.props.history.push('/');
+  }
+
   userLoggedOut() {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li className="auth-buttons">
@@ -84,7 +89,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li className="auth-buttons">
@@ -101,4 +106,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

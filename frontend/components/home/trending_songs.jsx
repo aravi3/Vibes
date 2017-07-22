@@ -10,7 +10,10 @@ class TrendingSongs extends React.Component {
   }
 
   showSongPage(id) {
-    return e => this.props.history.push(`/api/songs/${id}`);
+    return e => {
+      e.preventDefault();
+      this.props.history.push(`/api/songs/${id}`);
+    };
   }
 
   playSong(song) {

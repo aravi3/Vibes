@@ -1,6 +1,6 @@
 .main-nav {
   position: fixed;
-  z-index: 100;
+  z-index: 50;
   top: 0;
   display: flex;
   justify-content: space-between;
@@ -20,6 +20,10 @@
   height: 41px;
   border-bottom: 2px solid $lightest-black;
   border-top: 2px solid $lightest-black;
+}
+
+.logo:hover {
+  cursor: pointer;
 }
 
 .nav-button {
