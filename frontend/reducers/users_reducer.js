@@ -1,5 +1,11 @@
 import merge from 'lodash/merge';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import {
+  RECEIVE_CURRENT_USER,
+} from '../actions/session_actions';
+import {
+  RECEIVE_LIKE,
+  RECEIVE_CURRENT_USER_LIKES
+} from '../actions/like_actions';
 
 const initialState = {
   entities: {},

@@ -9,11 +9,10 @@ Rails.application.routes.draw do
 
     resources :songs, only: [:index, :show, :create, :destroy] do
       resources :comments, only: [:index, :create]
-      resources :likes, only: [:create]
     end
 
     resources :comments, only: [:destroy]
-    resources :likes, only: [:destroy]
+    resources :likes, only: [:create, :destroy]
     resources :genres, only: [:index]
   end
 

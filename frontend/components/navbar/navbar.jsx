@@ -8,6 +8,10 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      search: ""
+    };
+
     this.logoutUser = this.logoutUser.bind(this);
     this.signupForm = this.signupForm.bind(this);
     this.loginForm = this.loginForm.bind(this);
@@ -15,6 +19,21 @@ class Navbar extends React.Component {
     this.userLoggedOut = this.userLoggedOut.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
+    this.fetchSearch = this.fetchSearch.bind(this);
+    this.setSearch = this.setSearch.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchAllSongs();
+  }
+
+  setSearch(e) {
+    const search = e.target.value ? e.target.value : "";
+    this.setState({ search });
+  }
+
+  fetchSearch() {
+
   }
 
   logoutUser() {
@@ -76,8 +95,16 @@ class Navbar extends React.Component {
           <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
+        <li>
+          <label className="search-bar"><i className="fa fa-search"></i>
+            &nbsp;&nbsp;&nbsp;
+            <input className="search-text" onChange={this.setSearch} placeholder="search" type="text" value={this.state.search}></input>
+          </label>
+        </li>
+
         <li className="auth-buttons">
           <button className="nav-button" onClick={this.demoLogin}>Demo Sign In</button>
+          <Link to="/api/songs" className="nav-button">Discover</Link>
           <LoginModal clearErrors={this.props.clearErrors}/>
           <SignupModal clearErrors={this.props.clearErrors}/>
         </li>
@@ -92,8 +119,16 @@ class Navbar extends React.Component {
           <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
+        <li>
+          <label className="search-bar"><i className="fa fa-search"></i>
+            &nbsp;&nbsp;&nbsp;
+            <input className="search-text" onChange={this.setSearch} placeholder="search" type="text" value={this.state.search}></input>
+          </label>
+        </li>
+
         <li className="auth-buttons">
           <Link to={`/api/users/${this.props.currentUser.id}`} className="nav-button">{this.props.currentUser.username}</Link>
+          <Link to="/api/songs" className="nav-button">Discover</Link>
           <UploadModal clearErrors={this.props.clearErrors}/>
           <button className="nav-button last-button" onClick={this.logoutUser}>Log Out</button>
         </li>

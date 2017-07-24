@@ -33,4 +33,14 @@ class User < ApplicationRecord
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
+
+  def likes_array
+    self.likes.map do |like|
+      like.song_id
+    end
+  end
+
+  has_many :songs
+  has_many :likes
+  has_many :comments
 end

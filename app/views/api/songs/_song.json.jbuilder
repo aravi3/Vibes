@@ -5,3 +5,4 @@ json.title song.title
 json.artist song.artist
 json.track song.track.url
 json.image song.image.url
+json.likes song.likes.count

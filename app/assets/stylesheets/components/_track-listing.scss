@@ -9,6 +9,7 @@
   color: $black;
   font-size: 15px;
   justify-content: space-between;
+  padding: 5px;
   border-bottom: 1px solid $black;
   align-items: center;
 }
@@ -35,6 +36,7 @@
 
 .index-listing-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -49,44 +51,133 @@ select {
   padding-bottom: 3px;
 }
 
-.track-listing-left {
-  display: flex;
-  flex-direction: column;
-}
-
 .track-listing-image {
-  width: 260px;
-  height: 250px;
-  background-size: 260px 250px;
+  width: 150px;
+  height: 140px;
+  background-size: 150px 140px;
   background-repeat: no-repeat;
   position: relative;
 }
 
 .track-listing-image:hover {
   opacity: 0.7;
-  .play-button {
+  .play-button-index {
     visibility: visible;
   }
 }
 
-.track-listing-left-item {
+.track-listing-item {
   position: relative;
 }
 
 .track-number {
   position: absolute;
-  top: 110px;
+  top: 55px;
+}
+
+.track-likes {
+  position: absolute;
+  font-family: $main-text;
+  color: $dark-orange;
+  font-size: 60px;
+  right: 60px;
+  top: 6px;
 }
 
 .song-details {
   font-family: $main-text;
-  font-size: 30px;
+  font-size: 20px;
   position: absolute;
-  top: 80px;
+  top: 30px;
   left: 365px;
   width: 100%;
 }
 
+.play-button-index {
+  width: 30%;
+  height: 30%;
+  position: absolute;
+  visibility: hidden;
+  top: 50px;
+  left: 55px;
+  opacity: 0.6;
+}
+
+.play-button-index:hover {
+  opacity: 1;
+}
+
 .song-artist {
   color: $lightest-black;
+}
+
+.most-liked {
+  color: $lightest-black;
+}
+
+/*.indiv-song-background:hover {
+  background: $dark-orange;
+
+  padding: 20px;
+
+  .song-details {
+    top: 50px;
+  }
+
+  .track-number {
+    top: 75px;
+  }
+}*/
+
+.indiv-song-background:hover {
+  opacity: 0.6;
+
+  .track-likes {
+    visibility: hidden;
+  }
+
+  .liked-status {
+    visibility: hidden;
+  }
+
+  .like-action {
+    visibility: visible;
+  }
+}
+
+.liked-status {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 35px;
+  right: 350px;
+}
+
+.like-action {
+  position: absolute;
+  font-size: 40px;
+  top: 25px;
+  right: 325px;
+  color: $white;
+  visibility: hidden;
+  font-family: $main-text;
+}
+
+.like-action:hover {
+  cursor: pointer;
+  color: $dark-orange;
+}
+
+.explore-header {
+  padding-bottom: 5px;
+  margin-right: 40px;
+  font-size: 40px;
+  color: $white;
+  border-bottom: 1px solid $white;
+}
+
+.explore-header:hover {
+  color: $dark-orange;
+  border-bottom: 1px solid $dark-orange;
+  cursor: pointer;
 }

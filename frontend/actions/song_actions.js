@@ -2,6 +2,7 @@ import * as APIUtil from '../util/song_api_util';
 
 export const RECEIVE_SONGS = 'RECEIVE_SONGS';
 export const RECEIVE_SONG = 'RECEIVE_SONG';
+export const SHOW_SONG = 'SHOW_SONG';
 export const DELETE_SONG = 'DELETE_SONG';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -16,6 +17,13 @@ export const receiveSongs = (songs) => {
 export const receiveSong = (song) => {
   return {
     type: RECEIVE_SONG,
+    song
+  };
+};
+
+export const showSong = (song) => {
+  return {
+    type: SHOW_SONG,
     song
   };
 };
@@ -49,7 +57,7 @@ export const fetchAllSongs = () => dispatch => {
 export const fetchSong = (id) => dispatch => {
   return APIUtil.fetchSong(id).then(
     resp => {
-      dispatch(receiveSong(resp));
+      dispatch(showSong(resp));
       dispatch(clearErrors());
     },
     err => dispatch(receiveErrors(err.responseJSON))

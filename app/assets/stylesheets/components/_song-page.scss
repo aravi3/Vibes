@@ -1,0 +1,15 @@
+.show-song-container {
+  position: relative;
+}
+
+.show-song-info {
+  font-family: $main-text;
+  font-size: 50px;
+  position: absolute;
+  top: 150px;
+  left: 900px;
+}
+
+.show-song-artist {
+  color: $lightest-black;
+}

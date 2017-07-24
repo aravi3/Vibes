@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_SONGS,
   RECEIVE_SONG,
+  SHOW_SONG,
   DELETE_SONG
 } from '../actions/song_actions';
 
@@ -26,7 +27,8 @@ const songsReducer = (state = initialState, action) => {
           title: song.title,
           artist: song.artist,
           track: song.track,
-          image: song.image
+          image: song.image,
+          likes: song.likes
         };
       });
 
@@ -41,10 +43,29 @@ const songsReducer = (state = initialState, action) => {
         title: action.song.title,
         artist: action.song.artist,
         track: action.song.track,
-        image: action.song.image
+        image: action.song.image,
+        likes: action.song.likes
       };
 
       newState.currentSong = action.song.id;
+
+      return newState;
+    case SHOW_SONG:
+      newState = {
+        entities: {},
+        currentSong: undefined
+      };
+
+      newState.entities[action.song.id] = {
+        id: action.song.id,
+        user_id: action.song.user_id,
+        genre_id: action.song.genre_id,
+        title: action.song.title,
+        artist: action.song.artist,
+        track: action.song.track,
+        image: action.song.image,
+        likes: action.song.likes
+      };
 
       return newState;
     case DELETE_SONG:

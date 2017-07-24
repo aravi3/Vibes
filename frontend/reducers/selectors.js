@@ -6,8 +6,12 @@ export const selectAllGenres = (genres) => {
   return Object.values(genres);
 };
 
+export const selectAllLikes = (likes) => {
+  return Object.values(likes);
+};
+
 export const selectAllSongs = (songs) => {
-  return Object.values(songs);
+  return Object.values(songs).sort((x, y) => y.likes - x.likes);
 };
 
 export const selectPlaylist = (songs, currentSong) => {
