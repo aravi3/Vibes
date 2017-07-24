@@ -37,7 +37,7 @@ class LoginForm extends React.Component {
 
   loginUser(e) {
     e.preventDefault();
-    
+
     const username = this.state.username;
     const password = this.state.password;
 
@@ -58,7 +58,7 @@ class LoginForm extends React.Component {
   render() {
 
     let errors = this.props.errors.map((err, idx) => {
-      return (<p key={`login-errors-${idx}`}>{err}</p>);
+      return (<p className="error-messages" key={`login-errors-${idx}`}>{err}</p>);
     });
 
     return (
@@ -80,7 +80,9 @@ class LoginForm extends React.Component {
         <br />
 
         <center>
-          <button disabled={this.state.loading} className="splash-button" onClick={this.loginUser}>Log in</button>
+          <button disabled={this.state.loading} className="splash-button" onClick={this.loginUser}>
+            {this.state.loading ? <div className="loader"></div> : "Log in"}
+          </button>
         </center>
       </form>
     );

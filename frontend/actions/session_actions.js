@@ -10,7 +10,14 @@ export const signup = (user) => dispatch => {
       dispatch(receiveCurrentUser(currentUser));
       dispatch(clearErrors());
     },
-    err => dispatch(receiveErrors(err.responseJSON))
+    err => {
+      if (err.responseJSON) {
+        dispatch(receiveErrors(err.responseJSON));
+      }
+      else {
+        dispatch(receiveErrors([err.statusText]));
+      }
+    }
   );
 };
 
