@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SongIndex extends React.Component {
   constructor(props) {
@@ -169,9 +170,9 @@ class SongIndex extends React.Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
               <span className="song-details">
-                <span className="song-artist">{song.artist}</span>
+                <Link to={`/api/users/${song.user_id}`} className="song-artist">{song.artist}</Link>
                 <br />
-                <span>{song.title}</span>
+                <Link to={`/api/songs/${song.id}`} className="song-title">{song.title}</Link>
               </span>
 
               {(likeId && this.all) ? <img className="liked-status" src="assets/check_mark.png" /> : ""}

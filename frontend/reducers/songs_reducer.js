@@ -69,6 +69,9 @@ const songsReducer = (state = initialState, action) => {
 
       return newState;
     case DELETE_SONG:
+      newState = merge({}, state);
+      delete newState[action.song.id];
+      return newState;
     default:
       return state;
   }

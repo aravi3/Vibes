@@ -42,16 +42,14 @@
 
 .cameracover {
   position: absolute;
-  top: 20px;
-  left: 30px;
-  visibility: hidden;
+  top: 0px;
+  left: 0px;
 }
 
 .cameraprof {
   position: absolute;
-  top: 160px;
-  left: 40px;
-  visibility: hidden;
+  top: 0px;
+  left: 0px;
 }
 
 .self-cover-pic {
@@ -60,13 +58,15 @@
 }
 
 .self-cover-pic:hover {
-  cursor: pointer;
-  border: 0.5px solid $dark-orange;
+  .cameracover {
+    visibility: visible;
+  }
 }
 
 .self-profile-pic:hover {
-  cursor: pointer;
-  border: 0.5px solid $dark-orange;
+  .cameraprof {
+    visibility: visible;
+  }
 }
 
 .self-profile-pic {
@@ -76,6 +76,17 @@
   background-size: 100%;
   top: 140px;
   left: 20px;
+}
+
+.pencil-edit {
+  position: absolute;
+  right: 0;
+  color: $lightest-black;
+}
+
+.pencil-edit:hover {
+  cursor: pointer;
+  color: $black;
 }
 
 .self-profile-username {
@@ -91,8 +102,26 @@
   font-size: 20px;
   color: $lightest-black;
   position: absolute;
-  top: 270px;
-  left: 460px;
+  background: $light-gray;
+  width: 417px;
+  height: 75px;
+  top: 265px;
+  left: 480px;
+}
+
+.hidden-cover-reader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.hidden-profile-reader {
+  position: absolute;
+  top: 138px;
+  left: 5px;
+  z-index: 2;
+  opacity: 0;
 }
 
 .profile-container {

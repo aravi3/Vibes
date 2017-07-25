@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchSong } from '../../actions/song_actions';
+import { fetchSong, deleteSong } from '../../actions/song_actions';
 import { fetchAllUsers } from '../../actions/session_actions';
 import { fetchAllComments, createComment, deleteComment } from '../../actions/comment_actions';
 import { selectAllSongs, selectAllComments, selectLoggedIn } from '../../reducers/selectors';
@@ -21,7 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchAllComments: (songId) => dispatch(fetchAllComments(songId)),
     deleteComment: (id) => dispatch(deleteComment(id)),
     createComment: (comment) => dispatch(createComment(comment)),
-    fetchSong: (id) => dispatch(fetchSong(id))
+    fetchSong: (id) => dispatch(fetchSong(id)),
+    deleteSong: (id) => dispatch(deleteSong(id))
   };
 };
 

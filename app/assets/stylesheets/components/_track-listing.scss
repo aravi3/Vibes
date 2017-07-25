@@ -18,6 +18,14 @@
   padding-right: 350px;
 }
 
+.song-artist:hover {
+  text-decoration: underline;
+}
+
+.song-title:hover {
+  text-decoration: underline;
+}
+
 .index-header-mid {
   padding-right: 250px;
 }
@@ -130,7 +138,7 @@ select {
 }*/
 
 .indiv-song-background:hover {
-  opacity: 0.6;
+  opacity: 0.8;
 
   .track-likes {
     visibility: hidden;

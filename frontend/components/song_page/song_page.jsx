@@ -1,6 +1,6 @@
 import React from 'react';
 import Audio from 'react-audioplayer';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import UploadFormContainer from '../upload/upload_form_container';
 
 class SongPage extends React.Component {
@@ -14,6 +14,7 @@ class SongPage extends React.Component {
     this.renderAudioPlayer = this.renderAudioPlayer.bind(this);
     this.addComment = this.addComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
+    this.deleteSong = this.deleteSong.bind(this);
     this.openUploadModal = this.openUploadModal.bind(this);
   }
 
@@ -36,6 +37,12 @@ class SongPage extends React.Component {
     return e => this.props.deleteComment(id);
   }
 
+  deleteSong(id) {
+    return e => {
+      this.props.deleteSong(id);
+    };
+  }
+
   openUploadModal(e) {
     e.preventDefault();
     window.globalUploadModal(parseInt(this.props.match.params.songId));
@@ -50,7 +57,8 @@ class SongPage extends React.Component {
           img: this.props.song[0].image,
           comments: [],
           artist: this.props.song[0].artist,
-          user_id: this.props.song[0].user_id
+          user_id: this.props.song[0].user_id,
+          id: this.props.song[0].id
         }];
 
         this.setState({ song });
@@ -98,7 +106,7 @@ class SongPage extends React.Component {
                 Edit song
               </button>
               <br />
-              <button className="show-modify-button">
+              <button onClick={this.deleteSong(this.state.song[0].id)} className="show-modify-button">
                 Delete song
               </button>
             </div> : "" }
@@ -137,4 +145,4 @@ class SongPage extends React.Component {
   }
 }
 
-export default SongPage;
+export default withRouter(SongPage);

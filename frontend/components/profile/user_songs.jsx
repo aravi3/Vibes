@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class UserSongs extends React.Component {
   constructor(props) {
@@ -108,7 +109,7 @@ class UserSongs extends React.Component {
               </div>
             </button>
 
-            <span className="user-song-details">{song.title}</span>
+            <Link to={`/api/songs/${song.id}`} className="user-song-details">{song.title}</Link>
 
             {likeId ? <img className="user-liked-status" src="assets/check_mark.png" /> : ""}
             <span onClick={this.toggleLike(likeId, song.id)} className="user-like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>

@@ -85,6 +85,10 @@
   width: 400px;
 }
 
+.user-song-details:hover {
+  text-decoration: underline;
+}
+
 .user-play-button-index {
   width: 45%;
   height: 45%;
@@ -115,7 +119,7 @@
 }
 
 .user-indiv-song-background:hover {
-  opacity: 0.6;
+  opacity: 0.9;
 
   .user-track-likes {
     visibility: hidden;
