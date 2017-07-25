@@ -1,17 +1,24 @@
 import { connect } from 'react-redux';
 import { fetchSong } from '../../actions/song_actions';
-import { createComment } from '../../actions/comment_actions';
-import { selectAllSongs } from '../../reducers/selectors';
+import { fetchAllUsers } from '../../actions/session_actions';
+import { fetchAllComments, createComment } from '../../actions/comment_actions';
+import { selectAllSongs, selectAllComments, selectLoggedIn } from '../../reducers/selectors';
 import SongPage from './song_page';
 
 const mapStateToProps = (state) => {
   return {
-    song: selectAllSongs(state.songs.entities)
+    loggedIn: selectLoggedIn(state.users),
+    users: state.users.entities,
+    currentUser: state.users.currentUser,
+    song: selectAllSongs(state.songs.entities),
+    comments: selectAllComments(state.comments)
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchAllUsers: () => dispatch(fetchAllUsers()),
+    fetchAllComments: (songId) => dispatch(fetchAllComments(songId)),
     createComment: (comment) => dispatch(createComment(comment)),
     fetchSong: (id) => dispatch(fetchSong(id))
   };

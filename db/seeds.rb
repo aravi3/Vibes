@@ -11,6 +11,13 @@ user3 = User.create!(username: "GuestUser3", email: "guest3@demo.com", password:
 user4 = User.create!(username: "GuestUser4", email: "guest4@demo.com", password: "demoaccount4")
 user5 = User.create!(username: "GuestUser5", email: "guest5@demo.com", password: "demoaccount5")
 
+profile1 = Profile.create!(user_id: user1.id, profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
+profile2 = Profile.create!(user_id: user2.id, profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
+profile3 = Profile.create!(user_id: user3.id, profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
+profile4 = Profile.create!(user_id: user4.id, profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
+profile5 = Profile.create!(user_id: user5.id, profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
+
+
 genre1 = Genre.create!(name: "Electronic")
 genre2 = Genre.create!(name: "Hip-Hop")
 genre3 = Genre.create!(name: "Folk")

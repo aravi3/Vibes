@@ -1,3 +1,3 @@
 json.id user.id
 json.username user.username
-json.likes user.likes_array
+json.profile_img user.profile.profile_img.url(:small)

@@ -7,6 +7,7 @@ import HomeContainer from './home/home_container';
 import AudioPlayerContainer from './audio_player/audio_player_container';
 import SongIndexContainer from './song_list/song_index_container';
 import SongPageContainer from './song_page/song_page_container';
+import ProfileContainer from './profile/profile_container';
 import { Route } from 'react-router-dom';
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
     <Route path="/" component={AudioPlayerContainer} />
     <Route exact path="/api/songs" component={SongIndexContainer} />
     <Route exact path="/api/songs/:songId" component={SongPageContainer} />
+    <Route exact path="/api/users/:userId" component={ProfileContainer} />
   </div>
 );
 

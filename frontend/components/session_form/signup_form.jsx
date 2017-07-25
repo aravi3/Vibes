@@ -16,6 +16,7 @@ class SignupForm extends React.Component {
     this.setUsername = this.setUsername.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.signupUser = this.signupUser.bind(this);
+    this.redirectHome = this.redirectHome.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,6 +26,10 @@ class SignupForm extends React.Component {
     else if (this.props.errors) {
       this.setState({ loading: false });
     }
+  }
+
+  redirectHome() {
+    this.props.history.push('/');
   }
 
   setEmail(e) {
@@ -61,8 +66,8 @@ class SignupForm extends React.Component {
       password: password
     };
 
-    this.props.signup(user);
     this.setState({ loading: true });
+    this.props.signup(user).then(this.redirectHome);
   }
 
   render() {

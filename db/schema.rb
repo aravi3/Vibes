@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720162223) do
+ActiveRecord::Schema.define(version: 20170724221502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,12 +39,18 @@ ActiveRecord::Schema.define(version: 20170720162223) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id",     null: false
-    t.string   "profile_img"
-    t.string   "cover_img"
+    t.integer  "user_id",                  null: false
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
+    t.string   "cover_img_file_name"
+    t.string   "cover_img_content_type"
+    t.integer  "cover_img_file_size"
+    t.datetime "cover_img_updated_at"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
   end
 

@@ -174,7 +174,7 @@ class SongIndex extends React.Component {
                 <span>{song.title}</span>
               </span>
 
-              {likeId ? <img className="liked-status" src="assets/check_mark.png" /> : ""}
+              {(likeId && this.all) ? <img className="liked-status" src="assets/check_mark.png" /> : ""}
               <span onClick={this.toggleLike(likeId, song.id)} className="like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>
 
               <span className="track-likes">{song.likes}</span>

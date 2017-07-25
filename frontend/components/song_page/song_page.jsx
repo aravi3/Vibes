@@ -14,12 +14,23 @@ class SongPage extends React.Component {
     this.addComment = this.addComment.bind(this);
   }
 
-  addComment(comment) {
-    console.log(comment);
+  addComment(body) {
+    if (!this.props.loggedIn) {
+      window.globalSignupModal();
+      return;
+    }
+
+    let comment = {
+      body: body,
+      user_id: this.props.currentUser.id,
+      song_id: parseInt(this.props.match.params.songId)
+    };
+
+    this.props.createComment(comment);
   }
 
   componentDidMount() {
-    this.props.fetchSong(this.props.match.params.songId).then(
+    this.props.fetchSong(parseInt(this.props.match.params.songId)).then(
       () => {
         let song = [{
           name: this.props.song[0].title,
@@ -32,6 +43,10 @@ class SongPage extends React.Component {
         this.setState({ song });
       }
     );
+
+    this.props.fetchAllComments(parseInt(this.props.match.params.songId));
+
+    this.props.fetchAllUsers();
   }
 
   renderAudioPlayer() {
@@ -70,9 +85,29 @@ class SongPage extends React.Component {
   }
 
   render() {
+    let comments = this.props.comments.reverse().map((comment, idx) => {
+      return (
+        <div key={`comment-container-${idx}`}>
+          {this.props.users[comment.user_id] ?
+          <ul style={{listStyleImage: `url(${this.props.users[comment.user_id].profile_img})`}} className="comment-details" key={`comment-${idx}`}>
+            <li className="comment-author" key={`comment-author-${idx}`}>
+              {this.props.users[comment.user_id].username}
+            </li>
+            <li className="comment-body" key={`comment-body-${idx}`}>{comment.body}</li>
+          </ul> : ""}
+      </div>
+    );
+    });
+
     return (
-      <div>
+      <div className="song-page-container">
         {this.state.song ? this.renderAudioPlayer() : ""}
+
+        <br /><br />
+
+        <ul className="show-comments">
+          {comments}
+        </ul>
       </div>
     );
   }

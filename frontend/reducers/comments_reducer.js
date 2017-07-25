@@ -3,8 +3,6 @@ import {
   RECEIVE_COMMENTS,
   RECEIVE_COMMENT,
   DELETE_COMMENT,
-  RECEIVE_ERRORS,
-  CLEAR_ERRORS
 } from '../actions/comment_actions';
 
 const initialState = {};
@@ -15,10 +13,33 @@ const commentsReducer = (state = initialState, action) => {
 
   switch(action.type) {
     case RECEIVE_COMMENTS:
+      newState = {};
+
+      action.comments.forEach(comment => {
+        newState[comment.id] = {
+          id: comment.id,
+          body: comment.body,
+          user_id: comment.user_id,
+          song_id: comment.song_id
+        };
+      });
+
+      return newState;
     case RECEIVE_COMMENT:
+      newState = merge({}, state);
+
+      newState[action.comment.id] = {
+        id: action.comment.id,
+        body: action.comment.body,
+        user_id: action.comment.user_id,
+        song_id: action.comment.song_id
+      };
+
+      return newState;
     case DELETE_COMMENT:
-    case RECEIVE_ERRORS:
-    case CLEAR_ERRORS:
+      newState = merge({}, state);
+      delete newState(action.id);
+      return newState;
     default:
       return state;
   }

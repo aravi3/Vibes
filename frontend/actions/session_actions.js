@@ -1,11 +1,31 @@
 import * as APIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const SHOW_USER = 'SHOW_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
+export const fetchAllUsers = () => dispatch => {
+  return APIUtil.fetchAllUsers().then(
+    users => {
+      dispatch(receiveUsers(users));
+      dispatch(clearErrors());
+    }
+  );
+};
+
+export const fetchUser = (id) => dispatch => {
+  return APIUtil.fetchUser(id).then(
+    user => {
+      dispatch(showUser(user));
+      dispatch(clearErrors());
+    }
+  );
+};
+
 export const signup = (user) => dispatch => {
-  APIUtil.signup(user).then(
+  return APIUtil.signup(user).then(
     currentUser => {
       dispatch(receiveCurrentUser(currentUser));
       dispatch(clearErrors());
@@ -22,7 +42,7 @@ export const signup = (user) => dispatch => {
 };
 
 export const login = (user) => dispatch => {
-  APIUtil.login(user).then(
+  return APIUtil.login(user).then(
     currentUser => {
       dispatch(receiveCurrentUser(currentUser));
       dispatch(clearErrors());
@@ -32,7 +52,7 @@ export const login = (user) => dispatch => {
 };
 
 export const logout = () => dispatch => {
-  APIUtil.logout().then(
+  return APIUtil.logout().then(
     currentUser => {
       dispatch(receiveCurrentUser({
         id: undefined,
@@ -44,10 +64,24 @@ export const logout = () => dispatch => {
   );
 };
 
+export const receiveUsers = (users) => {
+  return {
+    type: RECEIVE_USERS,
+    users
+  };
+};
+
 export const receiveCurrentUser = (currentUser) => {
   return {
     type: RECEIVE_CURRENT_USER,
     currentUser
+  };
+};
+
+export const showUser = (user) => {
+  return {
+    type: SHOW_USER,
+    user
   };
 };
 

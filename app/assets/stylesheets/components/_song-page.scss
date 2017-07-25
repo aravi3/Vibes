@@ -13,3 +13,27 @@
 .show-song-artist {
   color: $lightest-black;
 }
+
+.song-page-container {
+  position: relative;
+}
+
+.show-comments {
+  position: absolute;
+  font-family: $sans-serif;
+  top: 600px;
+  left: 300px;
+}
+
+.comment-author {
+  font-size: 13px;
+  color: $lightest-black;
+}
+
+.comment-body {
+  list-style: none;
+}
+
+.comment-details {
+  margin-bottom: 25px;
+}

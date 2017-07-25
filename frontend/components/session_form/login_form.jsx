@@ -14,6 +14,7 @@ class LoginForm extends React.Component {
     this.setUsername = this.setUsername.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.redirectHome = this.redirectHome.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,6 +24,10 @@ class LoginForm extends React.Component {
     else if (this.props.errors) {
       this.setState({ loading: false });
     }
+  }
+
+  redirectHome() {
+    this.props.history.push('/');
   }
 
   setUsername(e) {
@@ -51,8 +56,8 @@ class LoginForm extends React.Component {
       password: password
     };
 
-    this.props.login(user);
     this.setState({ loading: true });
+    this.props.login(user).then(this.redirectHome);
   }
 
   render() {

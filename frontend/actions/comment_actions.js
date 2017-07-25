@@ -40,8 +40,8 @@ export const clearErrors = () => {
   };
 };
 
-export const fetchAllComments = () => dispatch => {
-  return APIUtil.fetchAllComments().then(
+export const fetchAllComments = (songId) => dispatch => {
+  return APIUtil.fetchAllComments(songId).then(
     resp => dispatch(receiveComments(resp))
   );
 };
