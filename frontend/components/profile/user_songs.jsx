@@ -39,7 +39,11 @@ class UserSongs extends React.Component {
     this.props.fetchUserLikes(this.props.currentUser.id);
     this.props.fetchAllSongs().then(
       () => {
-        this.setState({ filteredSongs: this.props.songs });
+        let filteredSongs = this.props.songs.filter(song => {
+          return song.user_id === this.props.userId;
+        });
+
+        this.setState({ filteredSongs });
       }
     );
   }
@@ -52,7 +56,11 @@ class UserSongs extends React.Component {
     if (nextProps.likes.length !== this.props.likes.length) {
       this.props.fetchAllSongs().then(
         () => {
-          this.setState({ filteredSongs: this.props.songs });
+          let filteredSongs = this.props.songs.filter(song => {
+            return song.user_id === this.props.userId;
+          });
+
+          this.setState({ filteredSongs });
         }
       );
     }
@@ -100,13 +108,7 @@ class UserSongs extends React.Component {
               </div>
             </button>
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-            <span className="user-song-details">
-              <span className="user-song-artist">{song.artist}</span>
-              <br />
-              <span>{song.title}</span>
-            </span>
+            <span className="user-song-details">{song.title}</span>
 
             {likeId ? <img className="user-liked-status" src="assets/check_mark.png" /> : ""}
             <span onClick={this.toggleLike(likeId, song.id)} className="user-like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>

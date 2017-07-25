@@ -25,7 +25,7 @@ class Profile extends React.Component {
   }
 
   renderUserSongs() {
-    return <UserSongsContainer />;
+    return <UserSongsContainer userId={parseInt(this.props.match.params.userId)}/>;
   }
 
   render() {
