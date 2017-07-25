@@ -35,15 +35,19 @@ class UploadModal extends React.Component {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      songId: undefined
     };
 
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
 
-    window.globalUploadModal = () => {
-        this.setState({modalIsOpen: true});
-      };
+    window.globalUploadModal = (songId) => {
+      if (songId) {
+        this.setState({ songId });
+      }
+      this.setState({modalIsOpen: true});
+    };
 
     window.globalUploadModal = window.globalUploadModal.bind(this);
   }
@@ -70,7 +74,7 @@ class UploadModal extends React.Component {
           style={customStyles}
           contentLabel="Upload Modal">
 
-          <UploadFormContainer closeModal={this.closeModal}/>
+          <UploadFormContainer songId={this.state.songId} closeModal={this.closeModal}/>
         </Modal>
       </div>
     );

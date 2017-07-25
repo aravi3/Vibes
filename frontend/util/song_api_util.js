@@ -24,6 +24,17 @@ export const createSong = (song) => {
   });
 };
 
+export const editSong = (song, id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/songs/${id}`,
+    dataType: 'JSON',
+    contentType: false,
+    processData: false,
+    data: song
+  });
+};
+
 export const deleteSong = (id) => {
   return $.ajax({
     method: 'DELETE',

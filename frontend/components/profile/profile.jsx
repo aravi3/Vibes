@@ -15,13 +15,27 @@ class Profile extends React.Component {
   }
 
   renderUserInfo() {
-    return(
-      <div style={{backgroundImage: `url(${this.props.users[0].cover_img})`}} className="image-container">
-        <div style={{backgroundImage: `url(${this.props.users[0].profile_img})`}} className="profile-pic" />
-        <span className="profile-username">{this.props.users[0].username}</span>
-          <span className="profile-description">{this.props.users[0].description}</span>
-      </div>
-    );
+    if (this.props.users[0].id === parseInt(this.props.match.params.userId)) {
+      return(
+        <div style={{backgroundImage: `url(${this.props.users[0].cover_img})`}} className="self-image-container">
+          <div className="cameracover"><i className="fa fa-camera"></i></div>
+          <div className="self-cover-pic"></div>
+          <div style={{backgroundImage: `url(${this.props.users[0].profile_img})`}} className="self-profile-pic" />
+          <div className="cameraprof"><i className="fa fa-camera"></i></div>
+          <span className="self-profile-username">{this.props.users[0].username}</span>
+            <span className="self-profile-description">{this.props.users[0].description}</span>
+        </div>
+      );
+    }
+    else {
+      return(
+        <div style={{backgroundImage: `url(${this.props.users[0].cover_img})`}} className="image-container">
+          <div style={{backgroundImage: `url(${this.props.users[0].profile_img})`}} className="profile-pic" />
+          <span className="profile-username">{this.props.users[0].username}</span>
+            <span className="profile-description">{this.props.users[0].description}</span>
+        </div>
+      );
+    }
   }
 
   renderUserSongs() {

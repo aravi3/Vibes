@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import UploadForm from './upload_form';
 import { fetchAllGenres } from '../../actions/genre_actions';
-import { createSong } from '../../actions/song_actions';
-import { selectAllGenres } from '../../reducers/selectors';
+import { createSong, fetchSong, editSong } from '../../actions/song_actions';
+import { selectAllGenres, selectAllSongs } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
   return {
-    song: state.songs.currentSong,
+    currentSong: state.songs.currentSong,
+    songs: selectAllSongs(state.songs.entities),
     user: state.users.currentUser,
     genres: selectAllGenres(state.genres),
     errors: state.errors
@@ -15,6 +16,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchSong: (id) => dispatch(fetchSong(id)),
+    editSong: (song, id) => dispatch(editSong(song, id)),
     createSong: (song) => dispatch(createSong(song)),
     fetchAllGenres: () => dispatch(fetchAllGenres())
   };

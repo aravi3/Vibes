@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TrendingSongsContainer from './trending_songs_container';
 import SignupModal from '../modal/signup_modal';
+import UploadModal from '../modal/upload_modal';
 
 class Home extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class Home extends React.Component {
 
     this.openSignupModal = this.openSignupModal.bind(this);
     <SignupModal />;
+    <UploadModal />;
   }
 
   openSignupModal(e) {

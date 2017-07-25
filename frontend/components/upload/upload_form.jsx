@@ -24,9 +24,9 @@ class UploadForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.song !== this.props.song) {
+    if (nextProps.currentSong !== this.props.currentSong) {
       this.props.closeModal();
-      let path = `/api/songs/${nextProps.song}`;
+      let path = `/api/songs/${nextProps.currentSong}`;
       this.props.history.push(path);
     }
     else if (this.props.errors) {
@@ -36,6 +36,17 @@ class UploadForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchAllGenres();
+
+    if (this.props.songId) {
+      this.props.fetchSong(this.props.songId).then(
+        () => {
+          this.setState({ track: this.props.songs[0].track });
+          this.setState({ genre_id: this.props.songs[0].genre_id });
+          this.setState({ title: this.props.songs[0].title });
+          this.setState({ image_preview: this.props.songs[0].image });
+        }
+      );
+    }
   }
 
   setGenre(e) {
@@ -86,18 +97,33 @@ class UploadForm extends React.Component {
     formData.append("song[artist]", this.state.artist);
     formData.append("song[image]", this.state.image);
 
-    this.props.createSong(formData);
+    if (this.props.songId) {
+      this.props.editSong(formData, this.props.songId).then(
+        () => this.props.closeModal()
+      );
+    }
+    else {
+      this.props.createSong(formData).then(
+        () => this.props.closeModal()
+      );
+    }
+
     this.setState({ loading: true });
   }
 
   render() {
 
     let errors = this.props.errors.map((err, idx) => {
-      return (<p key={`upload-errors-${idx}`}>{err}</p>);
+      return (<p className="error-messages" key={`upload-errors-${idx}`}>{err}</p>);
     });
 
     let genres = this.props.genres.map((genre, idx) => {
-      return (<option value={genre.id} key={`genre-${idx}`}>{genre.name}</option>);
+      if (this.state.genre_id === genre.id) {
+        return (<option selected value={genre.id} key={`genre-${idx}`}>{genre.name}</option>);
+      }
+      else {
+        return (<option value={genre.id} key={`genre-${idx}`}>{genre.name}</option>);
+      }
     });
 
     return (

@@ -74,6 +74,16 @@ export const createSong = (song) => dispatch => {
   );
 };
 
+export const editSong = (song, id) => dispatch => {
+  return APIUtil.editSong(song, id).then(
+    resp => {
+      dispatch(showSong(resp));
+      dispatch(clearErrors());
+    },
+    err => dispatch(receiveErrors([err.statusText]))
+  );
+};
+
 export const deleteSong = (id) => dispatch => {
   return APIUtil.deleteSong(id).then(
     resp => {

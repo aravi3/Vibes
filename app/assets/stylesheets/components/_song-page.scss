@@ -21,8 +21,20 @@
 .show-comments {
   position: absolute;
   font-family: $sans-serif;
-  top: 600px;
-  left: 300px;
+  top: 580px;
+  left: 280px;
+}
+
+.show-modify-button {
+  border: 1px solid $dark-orange;
+  color: $dark-orange;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.show-modify-button:hover {
+  color: $white;
+  background: $dark-orange;
 }
 
 .comment-author {
@@ -32,6 +44,19 @@
 
 .comment-body {
   list-style: none;
+  .fa-times {
+    visibility: hidden;
+  }
+}
+
+.comment-body:hover {
+  .fa-times {
+    visibility: visible;
+  }
+
+  .fa-times:hover {
+    cursor: pointer;
+  }
 }
 
 .comment-details {

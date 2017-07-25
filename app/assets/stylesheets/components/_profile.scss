@@ -32,6 +32,69 @@
   left: 460px;
 }
 
+.self-image-container {
+  width: 900px;
+  height: 340px;
+  background-size: 900px 250px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.cameracover {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  visibility: hidden;
+}
+
+.cameraprof {
+  position: absolute;
+  top: 160px;
+  left: 40px;
+  visibility: hidden;
+}
+
+.self-cover-pic {
+  width: 900px;
+  height: 250px;
+}
+
+.self-cover-pic:hover {
+  cursor: pointer;
+  border: 0.5px solid $dark-orange;
+}
+
+.self-profile-pic:hover {
+  cursor: pointer;
+  border: 0.5px solid $dark-orange;
+}
+
+.self-profile-pic {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-size: 100%;
+  top: 140px;
+  left: 20px;
+}
+
+.self-profile-username {
+  font-family: $main-text;
+  font-size: 50px;
+  position: absolute;
+  top: 260px;
+  left: 250px;
+}
+
+.self-profile-description {
+  font-family: $main-text;
+  font-size: 20px;
+  color: $lightest-black;
+  position: absolute;
+  top: 270px;
+  left: 460px;
+}
+
 .profile-container {
   display: flex;
 }
