@@ -6,7 +6,8 @@ class SongIndex extends React.Component {
     super(props);
 
     this.state = {
-      filteredSongs: []
+      filteredSongs: [],
+      type: "all"
     };
 
     this.all = true;
@@ -18,14 +19,32 @@ class SongIndex extends React.Component {
     this.toggleLike = this.toggleLike.bind(this);
     this.likedSongs = this.likedSongs.bind(this);
     this.allSongs = this.allSongs.bind(this);
+    this.searchedSongs = this.searchedSongs.bind(this);
   }
 
   allSongs() {
+    this.setState({ type: "all" });
     this.all = true;
     this.setState({ filteredSongs: this.props.songs });
   }
 
+  searchedSongs() {
+    this.setState({ type: "search" });
+
+    let filteredSongs = this.props.songs.filter(song => {
+      return (
+        song.title.toLowerCase().includes(this.props.query) ||
+        song.artist.toLowerCase().includes(this.props.query)
+      );
+    });
+
+    this.setState({ filteredSongs });
+
+    return filteredSongs;
+  }
+
   likedSongs() {
+    this.setState({ type: "liked" });
     this.all = false;
     let likedIds = this.props.likes.map(like => like.song_id);
 
@@ -66,7 +85,7 @@ class SongIndex extends React.Component {
 
     let filteredSongs;
 
-    if (this.all) {
+    if (this.state.type === "all") {
       if (e.target.value === "All") {
         this.setState({ filteredSongs: this.props.songs });
         return;
@@ -98,12 +117,19 @@ class SongIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchUserLikes(this.props.currentUser.id);
+
+    this.props.fetchAllGenres();
+
     this.props.fetchAllSongs().then(
       () => {
-        this.setState({ filteredSongs: this.props.songs });
+        if (this.props.search) {
+          this.setState({ filteredSongs: this.searchedSongs() });
+        }
+        else {
+          this.setState({ filteredSongs: this.props.songs });
+        }
       }
     );
-    this.props.fetchAllGenres();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -114,12 +140,23 @@ class SongIndex extends React.Component {
     if (nextProps.likes.length !== this.props.likes.length) {
       this.props.fetchAllSongs().then(
         () => {
-          if (this.all) {
+          if (this.state.type === "all") {
             this.setState({ filteredSongs: this.props.songs });
           }
-          else {
-            this.setState({ filteredSongs: this.likedSongs()});
+          else if (this.state.type === "liked") {
+            this.setState({ filteredSongs: this.likedSongs() });
           }
+          else if (this.props.search) {
+            this.setState({ filteredSongs: this.searchedSongs() });
+          }
+        }
+      );
+    }
+
+    if (nextProps.query.length !== this.props.query.length) {
+      this.props.fetchAllSongs().then(
+        () => {
+          this.setState({ filteredSongs: this.searchedSongs() });
         }
       );
     }
@@ -175,7 +212,7 @@ class SongIndex extends React.Component {
                 <Link to={`/api/songs/${song.id}`} className="song-title">{song.title}</Link>
               </span>
 
-              {(likeId && this.all) ? <img className="liked-status" src="assets/check_mark.png" /> : ""}
+              {(likeId && this.state.type !== "liked") ? <img className="liked-status" src="assets/check_mark.png" /> : ""}
               <span onClick={this.toggleLike(likeId, song.id)} className="like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>
 
               <span className="track-likes">{song.likes}</span>
@@ -206,9 +243,9 @@ class SongIndex extends React.Component {
 
           <ul className="index-header-container">
             <li>
-              {this.all ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.allSongs} className="explore-header">Discover</span> : <span onClick={this.allSongs} className="explore-header">Discover</span>}
+              {this.state.type !== "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.allSongs} className="explore-header">Discover</span> : <span onClick={this.allSongs} className="explore-header">Discover</span>}
 
-              {this.props.loggedIn ? (!this.all ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.likedSongs} className="explore-header">Likes</span> : <span onClick={this.likedSongs} className="explore-header">Likes</span>) : ""}
+              {(this.props.loggedIn && !this.props.search) ? (this.state.type === "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.likedSongs} className="explore-header">Likes</span> : <span onClick={this.likedSongs} className="explore-header">Likes</span>) : ""}
 
               <br /><br /><br /><br /><br />
 
@@ -223,11 +260,13 @@ class SongIndex extends React.Component {
             <li>
               <br /><br /><br /><br /><br /><br />
 
-              <select onChange={this.filterGenre}>
-                <option value="invalid">Filter by genre</option>
-                <option value="All">All</option>
-                {genres}
-              </select>
+              {!this.props.search ?
+                <select onChange={this.filterGenre}>
+                  <option value="invalid">Filter by genre</option>
+                  <option value="All">All</option>
+                  {genres}
+                </select>
+                : "" }
 
               <br /><br /><br /><br /><br />
 

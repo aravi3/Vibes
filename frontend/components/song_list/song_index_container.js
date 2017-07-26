@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
     songs: selectAllSongs(state.songs.entities),
     genres: selectAllGenres(state.genres),
     likes: selectAllLikes(state.likes),
-    search: state.search
+    query: state.search.query
   };
 };
 

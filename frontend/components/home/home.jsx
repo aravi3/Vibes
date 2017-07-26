@@ -56,14 +56,14 @@ class Home extends React.Component {
   }
 
   showSearchResults() {
-
+    return (<SongIndexContainer search={true}/>);
   }
 
   render() {
     return (
       <div>
         {this.props.search.query ?
-          <SongIndexContainer /> : this.showHome() }
+          this.showSearchResults() : this.showHome() }
       </div>
     );
   }
