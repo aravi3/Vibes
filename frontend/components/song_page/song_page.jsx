@@ -140,15 +140,18 @@ class SongPage extends React.Component {
     });
 
     return (
-      <div className="song-page-container">
-        {this.state.song ? this.renderAudioPlayer() : ""}
+      <ul className="song-page-container">
+        <li className="song-page-left">
+          {this.state.song ? this.renderAudioPlayer() : ""}
+        </li>
 
-        <br />
-
-        <ul className="show-comments">
-          {comments}
-        </ul>
-      </div>
+        <li clasName="song-page-right">
+          <br />
+          <ul className="show-comments">
+            {comments}
+          </ul>
+        </li>
+      </ul>
     );
   }
 }

@@ -19,7 +19,17 @@
 }
 
 .song-page-container {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.song-page-left {
+  flex-grow: 1;
+}
+
+.song-page-right {
+  flex-grow: 3;
 }
 
 .show-comments {
@@ -69,4 +79,16 @@
 
 .comment-details {
   margin-bottom: 25px;
+}
+
+.songpage-col-left {
+  width: 33%;
+}
+
+.songpage-col-right {
+  width: 33%;
+}
+
+.songpage-col-middle {
+  width: 33%;
 }
