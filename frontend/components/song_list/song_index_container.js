@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
     currentUser: state.users.currentUser,
     songs: selectAllSongs(state.songs.entities),
     genres: selectAllGenres(state.genres),
-    likes: selectAllLikes(state.likes)
+    likes: selectAllLikes(state.likes),
+    search: state.search
   };
 };
 

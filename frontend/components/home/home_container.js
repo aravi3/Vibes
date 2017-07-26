@@ -4,6 +4,7 @@ import Home from './home';
 
 const mapStateToProps = (state) => {
   return {
+    search: state.search
   };
 };
 

@@ -19,7 +19,6 @@ class Navbar extends React.Component {
     this.userLoggedOut = this.userLoggedOut.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
     this.redirectHome = this.redirectHome.bind(this);
-    this.fetchSearch = this.fetchSearch.bind(this);
     this.setSearch = this.setSearch.bind(this);
   }
 
@@ -30,10 +29,7 @@ class Navbar extends React.Component {
   setSearch(e) {
     const search = e.target.value ? e.target.value : "";
     this.setState({ search });
-  }
-
-  fetchSearch() {
-
+    setTimeout(() => this.props.receiveSearch(this.state.search), 0);
   }
 
   logoutUser() {
@@ -92,7 +88,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li>
@@ -116,7 +112,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
         </li>
 
         <li>
@@ -137,7 +133,11 @@ class Navbar extends React.Component {
   }
 
   render() {
-    return this.props.loggedIn ? this.userLoggedIn() : this.userLoggedOut();
+    return (
+      <div>
+        {this.props.loggedIn ? this.userLoggedIn() : this.userLoggedOut()}
+      </div>
+    );
   }
 }
 

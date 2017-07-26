@@ -1,5 +1,6 @@
 import React from 'react';
 import Audio from 'react-audioplayer';
+import ReactDOM from 'react-dom';
 import { Link, withRouter } from 'react-router-dom';
 import UploadFormContainer from '../upload/upload_form_container';
 
@@ -70,6 +71,12 @@ class SongPage extends React.Component {
     this.props.fetchAllUsers();
   }
 
+  componentWillUnmount() {
+    if (this.audioComponent) {
+      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-pause'));
+    }
+  }
+
   renderAudioPlayer() {
     const audioStyles = {
       backgroundColor: 'white',
@@ -91,13 +98,14 @@ class SongPage extends React.Component {
             fullPlayer={true}
             autoPlay={false}
             playlist={this.state.song}
+            ref={audioComponent => {this.audioComponent = audioComponent;}}
           />
 
         <span className="show-song-info">
           {this.state.song[0].name}
           <br />
           <span className="show-song-artist">
-            by {this.state.song[0].artist}
+            by <Link to={`/api/users/${this.state.song[0].user_id}`}>{this.state.song[0].artist}</Link>
           </span>
           <br />
           {(this.state.song[0].user_id === this.props.currentUser.id) ?
@@ -123,7 +131,7 @@ class SongPage extends React.Component {
           {this.props.users[comment.user_id] ?
           <ul style={{listStyleImage: `url(${this.props.users[comment.user_id].profile_img})`}} className="comment-details" key={`comment-${idx}`}>
             <li className="comment-author" key={`comment-author-${idx}`}>
-              {this.props.users[comment.user_id].username}
+              <Link to={`/api/users/${comment.user_id}`}>{this.props.users[comment.user_id].username}</Link>
             </li>
             <li className="comment-body" key={`comment-body-${idx}`}>{comment.body} <i onClick={this.deleteComment(comment.id)} className="fa fa-times"></i></li>
           </ul> : ""}

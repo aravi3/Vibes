@@ -14,6 +14,10 @@
   color: $lightest-black;
 }
 
+.show-song-artist:hover {
+  text-decoration: underline;
+}
+
 .song-page-container {
   position: relative;
 }
@@ -40,6 +44,10 @@
 .comment-author {
   font-size: 13px;
   color: $lightest-black;
+}
+
+.comment-author:hover {
+  text-decoration: underline;
 }
 
 .comment-body {

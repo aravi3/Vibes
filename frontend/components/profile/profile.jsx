@@ -17,10 +17,8 @@ class Profile extends React.Component {
     this.renderUserInfo = this.renderUserInfo.bind(this);
     this.renderUserSongs = this.renderUserSongs.bind(this);
     this.setDescription = this.setDescription.bind(this);
-    this.setCoverImage = this.setCoverImage.bind(this);
-    this.setProfileImage = this.setProfileImage.bind(this);
     this.updateDescription = this.updateDescription.bind(this);
-    this.udpateProfileImage = this.updateProfileImage.bind(this);
+    this.updateProfileImage = this.updateProfileImage.bind(this);
     this.updateCoverImage = this.updateCoverImage.bind(this);
   }
 
@@ -41,24 +39,45 @@ class Profile extends React.Component {
     this.setState({ description });
   }
 
-  setCoverImage(e) {
-    console.log(e.currentTarget.files[0]);
-  }
-
-  setProfileImage(e) {
-    console.log(e.currentTarget.files[0]);
-  }
-
   updateDescription(e) {
     e.preventDefault();
-  }
 
-  updateProfileImage(e) {
-    e.preventDefault();
+    var formData = new FormData();
+    formData.append("user[profile_img]", this.state.profile_img);
+    formData.append("user[cover_img]", this.state.cover_img);
+    formData.append("user[description]", this.state.description);
+
+    this.props.editUser(formData, this.state.id);
   }
 
   updateCoverImage(e) {
     e.preventDefault();
+    const cover_img = e.currentTarget.files[0];
+    this.setState({ cover_img });
+
+    setTimeout(() => {
+      var formData = new FormData();
+      formData.append("user[profile_img]", this.state.profile_img);
+      formData.append("user[cover_img]", this.state.cover_img);
+      formData.append("user[description]", this.state.description);
+
+      this.props.editUser(formData, this.state.id);
+    }, 0);
+  }
+
+  updateProfileImage(e) {
+    e.preventDefault();
+    const profile_img = e.currentTarget.files[0];
+    this.setState({ profile_img });
+
+    setTimeout(() => {
+      var formData = new FormData();
+      formData.append("user[profile_img]", this.state.profile_img);
+      formData.append("user[cover_img]", this.state.cover_img);
+      formData.append("user[description]", this.state.description);
+
+      this.props.editUser(formData, this.state.id);
+    }, 0);
   }
 
   renderUserInfo() {
@@ -66,14 +85,14 @@ class Profile extends React.Component {
       return(
         <div style={{backgroundImage: `url(${this.state.cover_img})`}} className="self-image-container">
           <div className="self-cover-pic"><div className="cameracover"><i className="fa fa-camera"></i></div></div>
-          <input onChange={this.setCoverImage} className="hidden-cover-reader" type="file"></input>
-          <input onChange={this.setProfileImage} className="hidden-profile-reader" type="file"></input>
+          <input onChange={this.updateCoverImage} className="hidden-cover-reader" type="file"></input>
+          <input onChange={this.updateProfileImage} className="hidden-profile-reader" type="file"></input>
           <div style={{backgroundImage: `url(${this.state.profile_img})`}} className="self-profile-pic">
             <div className="cameraprof"><i className="fa fa-camera"></i></div>
           </div>
           <span className="self-profile-username">{this.state.username}</span>
           <textarea onChange={this.setDescription} className="self-profile-description" value={this.state.description}></textarea>
-          <span className="pencil-edit"><i className="fa fa-floppy-o"></i></span>
+          <span onClick={this.updateDescription} className="pencil-edit"><i className="fa fa-floppy-o"></i></span>
         </div>
       );
     }

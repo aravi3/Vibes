@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import TrendingSongsContainer from './trending_songs_container';
+import SongIndexContainer from '../song_list/song_index_container';
 import SignupModal from '../modal/signup_modal';
 import UploadModal from '../modal/upload_modal';
 
@@ -9,6 +10,9 @@ class Home extends React.Component {
     super(props);
 
     this.openSignupModal = this.openSignupModal.bind(this);
+    this.showHome = this.showHome.bind(this);
+    this.showSearchResults = this.showSearchResults.bind(this);
+
     <SignupModal />;
     <UploadModal />;
   }
@@ -18,7 +22,7 @@ class Home extends React.Component {
     window.globalSignupModal();
   }
 
-  render() {
+  showHome() {
     return (
       <ul className="home">
         <li className="col-left">&nbsp;</li>
@@ -48,6 +52,19 @@ class Home extends React.Component {
         </li>
         <li className="col-right">&nbsp;</li>
       </ul>
+    );
+  }
+
+  showSearchResults() {
+
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.search.query ?
+          <SongIndexContainer /> : this.showHome() }
+      </div>
     );
   }
 }

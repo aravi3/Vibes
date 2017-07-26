@@ -12,6 +12,16 @@ export const fetchUser = (id) => {
   });
 };
 
+export const editUser = (user, id) => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/users/${id}`,
+    contentType: false,
+    processData: false,
+    data: user
+  });
+};
+
 export const signup = (user) => {
   return $.ajax({
     method: 'POST',

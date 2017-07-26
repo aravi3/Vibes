@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/session_actions';
+import { fetchUser, editUser } from '../../actions/session_actions';
 import { selectAllSongs, selectAllUsers } from '../../reducers/selectors';
 import Profile from './profile';
 
@@ -12,6 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    editUser: (user, id) => dispatch(editUser(user, id)),
     fetchUser: (id) => dispatch(fetchUser(id))
   };
 };

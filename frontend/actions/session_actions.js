@@ -24,6 +24,15 @@ export const fetchUser = (id) => dispatch => {
   );
 };
 
+export const editUser = (user, id) => dispatch => {
+  return APIUtil.editUser(user, id).then(
+    resp => {
+      dispatch(showUser(resp));
+      dispatch(clearErrors());
+    }
+  );
+};
+
 export const signup = (user) => dispatch => {
   return APIUtil.signup(user).then(
     currentUser => {
