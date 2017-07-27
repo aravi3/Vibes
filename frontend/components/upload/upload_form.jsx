@@ -99,7 +99,7 @@ class UploadForm extends React.Component {
 
     if (this.props.songId) {
       this.props.editSong(formData, this.props.songId).then(
-        () => this.props.closeModal()
+        () => this.props.history.push('/api/songs')
       );
     }
     else {
@@ -146,7 +146,7 @@ class UploadForm extends React.Component {
 
             <br /><br /><br />
 
-            <select disabled={this.state.loading} onChange={this.setGenre} className="genre-dropdown">
+            <select disabled={this.state.loading} onChange={this.setGenre} className="upload-genre-dropdown">
               <option value="invalid">Select Genre</option>
               {genres}
             </select>

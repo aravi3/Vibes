@@ -26,6 +26,15 @@ input[type="password"] {
   font-family: $sans-serif;
 }
 
+.upload-genre-dropdown {
+  width: 140px;
+  padding: 2px;
+  font-size: 15px;
+  font-family: $sans-serif;
+  border: 1px solid $black;
+  color: $black;
+}
+
 .upload-form-right {
   display: flex;
   flex-direction: column;

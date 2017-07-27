@@ -1,13 +1,13 @@
 .main-nav {
   position: fixed;
-  z-index: 50;
+  z-index: 500;
   top: 0;
   display: flex;
   justify-content: space-between;
   height: 45px;
   width: 100%;
   align-items: center;
-  background-color: $lightest-black;
+  background-color: $black;
   min-width: 1070px;
 }
 
@@ -19,8 +19,8 @@
   margin-left: 115px;
   width: 125px;
   height: 41px;
-  border-bottom: 2px solid $lightest-black;
-  border-top: 2px solid $lightest-black;
+  border-bottom: 2px solid $black;
+  border-top: 2px solid $black;
 }
 
 .logo:hover {
@@ -45,6 +45,14 @@
 
 .search-text {
   width: 215px;
+  border-radius: 10px;
+  padding: 2px;
+  color: $black;
+  font-family: $sans-serif;
+}
+
+.search-bar input[type="text"] {
+  background-color: $white;
 }
 
 .search-bar {

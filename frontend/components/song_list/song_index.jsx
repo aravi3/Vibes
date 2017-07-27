@@ -153,7 +153,7 @@ class SongIndex extends React.Component {
       );
     }
 
-    if (nextProps.query.length !== this.props.query.length) {
+    if (nextProps.query !== this.props.query) {
       this.props.fetchAllSongs().then(
         () => {
           this.setState({ filteredSongs: this.searchedSongs() });
@@ -212,7 +212,7 @@ class SongIndex extends React.Component {
                 <Link to={`/api/songs/${song.id}`} className="song-title">{song.title}</Link>
               </span>
 
-              {(likeId && this.state.type !== "liked") ? <img className="liked-status" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1501089414/check_mark_cgow5g.png" /> : ""}
+              {(likeId && this.state.type !== "liked") ? <img className="liked-status" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501122479/check_cream_jemohy.png" /> : ""}
               <span onClick={this.toggleLike(likeId, song.id)} className="like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>
 
               <span className="track-likes">{song.likes}</span>
@@ -243,7 +243,9 @@ class SongIndex extends React.Component {
 
           <ul className="index-header-container">
             <li>
-              {this.state.type !== "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.allSongs} className="explore-header">Discover</span> : <span onClick={this.allSongs} className="explore-header">Discover</span>}
+              {this.props.search ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} className="explore-header">Search Results</span> :
+                (this.state.type !== "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.allSongs} className="explore-header">Discover</span> : <span onClick={this.allSongs} className="explore-header">Discover</span>)}
+
 
               {(this.props.loggedIn && !this.props.search) ? (this.state.type === "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.likedSongs} className="explore-header">Likes</span> : <span onClick={this.likedSongs} className="explore-header">Likes</span>) : ""}
 

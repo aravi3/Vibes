@@ -19,6 +19,7 @@ const App = () => (
     <Route exact path="/api/songs" component={SongIndexContainer} />
     <Route exact path="/api/songs/:songId" component={SongPageContainer} />
     <Route exact path="/api/users/:userId" component={ProfileContainer} />
+    <Route exact path="/api/search" render={() => <SongIndexContainer search={true}/>} />
   </div>
 );
 

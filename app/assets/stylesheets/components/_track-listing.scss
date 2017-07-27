@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   font-family: $sans-serif;
+  min-width: 1190px;
 }
 
 .index-header-container {
@@ -166,7 +167,7 @@ select {
   font-size: 40px;
   top: 25px;
   right: 325px;
-  color: $white;
+  color: $black;
   visibility: hidden;
   font-family: $main-text;
 }
@@ -180,8 +181,8 @@ select {
   padding-bottom: 5px;
   margin-right: 40px;
   font-size: 40px;
-  color: $white;
-  border-bottom: 1px solid $white;
+  color: $black;
+  border-bottom: 1px solid $black;
 }
 
 .explore-header:hover {

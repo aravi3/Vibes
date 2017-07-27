@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
+import SignupModal from './components/modal/signup_modal';
+import UploadModal from './components/modal/upload_modal';
 import configureStore from './store/store';
-import {
-  signup,
-  login,
-  logout
-} from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
+
   if (window.currentUser) {
     const preloadedState = {
       users: {
@@ -26,9 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   else {
     store = configureStore();
   }
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
+
+  <SignupModal />;
+  <UploadModal />;
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   const root = document.getElementById('root');

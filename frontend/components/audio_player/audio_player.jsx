@@ -27,7 +27,7 @@ class AudioPlayer extends React.Component {
       bottom: '0',
       backgroundColor: 'white',
       opacity: '0.95',
-      zIndex: '100'
+      zIndex: '500'
     };
 
     return (

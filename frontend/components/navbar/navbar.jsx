@@ -26,6 +26,12 @@ class Navbar extends React.Component {
     this.props.fetchAllSongs();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.query !== this.props.query) {
+      this.props.history.push('/api/search');
+    }
+  }
+
   setSearch(e) {
     const search = e.target.value ? e.target.value : "";
     this.setState({ search });
@@ -88,7 +94,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
         </li>
 
         <li>
@@ -112,7 +118,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500532501/logo_mtsa6u.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
         </li>
 
         <li>

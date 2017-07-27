@@ -17,6 +17,7 @@ class SongPage extends React.Component {
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.openUploadModal = this.openUploadModal.bind(this);
+    this.renderSongDetails = this.renderSongDetails.bind(this);
   }
 
   addComment(body) {
@@ -83,44 +84,41 @@ class SongPage extends React.Component {
       width: '600px',
       height: '500px',
       opacity: '0.95',
-      position: 'absolute',
-      top: '30px',
-      left: '220px'
+      marginRight: '50px'
     };
 
     return (
-      <center>
-        <div className="show-song-container">
-          <Audio
-            style={audioStyles}
-            comment={true}
-            onCommentSubmit={this.addComment}
-            fullPlayer={true}
-            autoPlay={false}
-            playlist={this.state.song}
-            ref={audioComponent => {this.audioComponent = audioComponent;}}
-          />
+      <Audio
+        style={audioStyles}
+        comment={true}
+        onCommentSubmit={this.addComment}
+        fullPlayer={true}
+        autoPlay={false}
+        playlist={this.state.song}
+        ref={audioComponent => {this.audioComponent = audioComponent;}}
+      />
+    );
+  }
 
-        <span className="show-song-info">
-          {this.state.song[0].name}
-          <br />
-          <span className="show-song-artist">
-            by <Link to={`/api/users/${this.state.song[0].user_id}`}>{this.state.song[0].artist}</Link>
-          </span>
-          <br />
-          {(this.state.song[0].user_id === this.props.currentUser.id) ?
-            <div>
-              <button onClick={this.openUploadModal} className="show-modify-button">
-                Edit song
-              </button>
-              <br />
-              <button onClick={this.deleteSong(this.state.song[0].id)} className="show-modify-button">
-                Delete song
-              </button>
-            </div> : "" }
-          </span>
-        </div>
-      </center>
+  renderSongDetails() {
+    return (
+      <span className="show-song-info">
+        {this.state.song[0].name}
+        <br />
+          <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.state.song[0].user_id}`}>{this.state.song[0].artist}</Link>
+        </span>
+        <br />
+        {(this.state.song[0].user_id === this.props.currentUser.id) ?
+          <div>
+            <button onClick={this.openUploadModal} className="show-modify-button">
+              Edit song
+            </button>
+            <br />
+            <button onClick={this.deleteSong(this.state.song[0].id)} className="show-modify-button">
+              Delete song
+            </button>
+          </div> : "" }
+      </span>
     );
   }
 
@@ -134,6 +132,7 @@ class SongPage extends React.Component {
               <Link to={`/api/users/${comment.user_id}`}>{this.props.users[comment.user_id].username}</Link>
             </li>
             <li className="comment-body" key={`comment-body-${idx}`}>{comment.body} <i onClick={this.deleteComment(comment.id)} className="fa fa-times"></i></li>
+            <li className="comment-time" key={`comment-time-${idx}`}>{comment.time}</li>
           </ul> : ""}
       </div>
     );
@@ -141,15 +140,18 @@ class SongPage extends React.Component {
 
     return (
       <ul className="song-page-container">
-        <li className="song-page-left">
+        <li className="full-audio-player">
           {this.state.song ? this.renderAudioPlayer() : ""}
-        </li>
 
-        <li clasName="song-page-right">
           <br />
+
           <ul className="show-comments">
             {comments}
           </ul>
+        </li>
+        <li>
+          <br /><br /><br /><br /><br /><br /><br /><br />
+          {this.state.song ? this.renderSongDetails() : ""}
         </li>
       </ul>
     );

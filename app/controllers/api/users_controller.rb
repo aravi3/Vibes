@@ -32,7 +32,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     @profile = Profile.find_by(user_id: params[:id])
 
-    if @profile.update(user_params)
+    if @profile.update_attributes(user_params)
       render 'api/users/profile'
     else
       render json: @profile.errors.full_messages, status: 422

@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.users.currentUser,
     loggedIn: selectLoggedIn(state.users),
-    search: state.search
+    query: state.search.query
   };
 };
 

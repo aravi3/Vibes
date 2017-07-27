@@ -20,7 +20,8 @@ const commentsReducer = (state = initialState, action) => {
           id: comment.id,
           body: comment.body,
           user_id: comment.user_id,
-          song_id: comment.song_id
+          song_id: comment.song_id,
+          time: comment.time
         };
       });
 
@@ -32,7 +33,8 @@ const commentsReducer = (state = initialState, action) => {
         id: action.comment.id,
         body: action.comment.body,
         user_id: action.comment.user_id,
-        song_id: action.comment.song_id
+        song_id: action.comment.song_id,
+        time: action.comment.time
       };
 
       return newState;
