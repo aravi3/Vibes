@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class UserSongs extends React.Component {
   constructor(props) {
@@ -54,7 +54,9 @@ class UserSongs extends React.Component {
       this.props.fetchUserLikes(nextProps.currentUser.id);
     }
 
-    if (nextProps.likes.length !== this.props.likes.length) {
+    if (
+      (nextProps.likes.length !== this.props.likes.length) ||
+      (nextProps.userId !== this.props.userId)) {
       this.props.fetchAllSongs().then(
         () => {
           let filteredSongs = this.props.songs.filter(song => {
@@ -158,4 +160,4 @@ class UserSongs extends React.Component {
   }
 }
 
-export default UserSongs;
+export default withRouter(UserSongs);

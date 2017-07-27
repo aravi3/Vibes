@@ -99,7 +99,7 @@ class UploadForm extends React.Component {
 
     if (this.props.songId) {
       this.props.editSong(formData, this.props.songId).then(
-        () => this.props.history.push('/api/songs')
+        () => this.props.closeModal()
       );
     }
     else {

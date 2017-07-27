@@ -9,18 +9,20 @@ class SongPage extends React.Component {
     super(props);
 
     this.state = {
-      song: undefined
+      comment: ""
     };
 
     this.renderAudioPlayer = this.renderAudioPlayer.bind(this);
-    this.addComment = this.addComment.bind(this);
+    this.addCommentAudio = this.addCommentAudio.bind(this);
+    this.addCommentBox = this.addCommentBox.bind(this);
+    this.setComment = this.setComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.openUploadModal = this.openUploadModal.bind(this);
     this.renderSongDetails = this.renderSongDetails.bind(this);
   }
 
-  addComment(body) {
+  addCommentAudio(body) {
     if (!this.props.loggedIn) {
       window.globalSignupModal();
       return;
@@ -28,6 +30,26 @@ class SongPage extends React.Component {
 
     let comment = {
       body: body,
+      user_id: this.props.currentUser.id,
+      song_id: parseInt(this.props.match.params.songId)
+    };
+
+    this.props.createComment(comment);
+  }
+
+  setComment(e) {
+    e.preventDefault();
+    this.setState({ comment: e.target.value });
+  }
+
+  addCommentBox() {
+    if (!this.props.loggedIn) {
+      window.globalSignupModal();
+      return;
+    }
+
+    let comment = {
+      body: this.state.comment,
       user_id: this.props.currentUser.id,
       song_id: parseInt(this.props.match.params.songId)
     };
@@ -51,21 +73,7 @@ class SongPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSong(parseInt(this.props.match.params.songId)).then(
-      () => {
-        let song = [{
-          name: this.props.song[0].title,
-          src: this.props.song[0].track,
-          img: this.props.song[0].image,
-          comments: [],
-          artist: this.props.song[0].artist,
-          user_id: this.props.song[0].user_id,
-          id: this.props.song[0].id
-        }];
-
-        this.setState({ song });
-      }
-    );
+    this.props.fetchSong(parseInt(this.props.match.params.songId));
 
     this.props.fetchAllComments(parseInt(this.props.match.params.songId));
 
@@ -91,10 +99,10 @@ class SongPage extends React.Component {
       <Audio
         style={audioStyles}
         comment={true}
-        onCommentSubmit={this.addComment}
+        onCommentSubmit={this.addCommentAudio}
         fullPlayer={true}
-        autoPlay={false}
-        playlist={this.state.song}
+        autoPlay={true}
+        playlist={[{name: this.props.song[0].title, src: this.props.song[0].track, img: this.props.song[0].image, comments: []}]}
         ref={audioComponent => {this.audioComponent = audioComponent;}}
       />
     );
@@ -103,18 +111,18 @@ class SongPage extends React.Component {
   renderSongDetails() {
     return (
       <span className="show-song-info">
-        {this.state.song[0].name}
+        {this.props.song[0].title}
         <br />
-          <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.state.song[0].user_id}`}>{this.state.song[0].artist}</Link>
+          <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.props.song[0].user_id}`}>{this.props.song[0].artist}</Link>
         </span>
         <br />
-        {(this.state.song[0].user_id === this.props.currentUser.id) ?
+        {(this.props.song[0].user_id === this.props.currentUser.id) ?
           <div>
             <button onClick={this.openUploadModal} className="show-modify-button">
               Edit song
             </button>
             <br />
-            <button onClick={this.deleteSong(this.state.song[0].id)} className="show-modify-button">
+            <button onClick={this.deleteSong(this.props.song[0].id)} className="show-modify-button">
               Delete song
             </button>
           </div> : "" }
@@ -123,7 +131,7 @@ class SongPage extends React.Component {
   }
 
   render() {
-    let comments = this.props.comments.reverse().map((comment, idx) => {
+    let comments = this.props.comments.map((comment, idx) => {
       return (
         <div key={`comment-container-${idx}`}>
           {this.props.users[comment.user_id] ?
@@ -141,17 +149,27 @@ class SongPage extends React.Component {
     return (
       <ul className="song-page-container">
         <li className="full-audio-player">
-          {this.state.song ? this.renderAudioPlayer() : ""}
+          {this.props.song[0] ? this.renderAudioPlayer() : ""}
 
           <br />
 
-          <ul className="show-comments">
-            {comments}
-          </ul>
+          <div className="comments-section">
+            <ul className="show-comments">
+              {comments}
+            </ul>
+
+            <div>
+              <textarea onChange={this.setComment} className="submit-comment"></textarea>
+              <br />
+              <center>
+                <button onClick={this.addCommentBox} className="submit-comment-button">Submit Comment</button>
+              </center>
+            </div>
+          </div>
         </li>
         <li>
           <br /><br /><br /><br /><br /><br /><br /><br />
-          {this.state.song ? this.renderSongDetails() : ""}
+          {this.props.song[0] ? this.renderSongDetails() : ""}
         </li>
       </ul>
     );

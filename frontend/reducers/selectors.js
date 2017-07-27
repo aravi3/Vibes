@@ -42,7 +42,7 @@ export const selectPlaylist = (songs, currentSong) => {
 };
 
 export const selectAllComments = (comments) => {
-  return Object.values(comments);
+  return Object.values(comments).reverse();
 };
 
 export const selectAllUsers = (users) => {

@@ -5,6 +5,7 @@ import Profile from './profile';
 
 const mapStateToProps = (state) => {
   return {
+    currentUser: state.users.currentUser,
     users: selectAllUsers(state.users.entities),
     songs: selectAllSongs(state.songs.entities)
   };

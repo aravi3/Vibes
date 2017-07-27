@@ -52,6 +52,9 @@
 .comment-body {
   list-style: none;
   font-size: 22px;
+  word-wrap: break-word;
+  width: 270px;
+  padding-right: 40px;
 
   .fa-times {
     visibility: hidden;
@@ -80,4 +83,25 @@
 
 .by {
   color: $lightest-black;
+}
+
+.comments-section {
+  display: flex;
+}
+
+.submit-comment {
+  font-family: $sans-serif;
+  width: 250px;
+  height: 70px;
+  background: $white;
+  border: 0.1px solid $black;
+  margin-top: 15px;
+}
+
+.submit-comment-button {
+  font-family: $sans-serif;
+  background: $dark-orange;
+  color: $white;
+  padding-left: 60px;
+  padding-right: 60px;
 }
