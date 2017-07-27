@@ -29,7 +29,7 @@ class SongIndex extends React.Component {
   }
 
   searchedSongs() {
-    this.setState({ type: "search" });
+    //this.setState({ type: "search" });
 
     let filteredSongs = this.props.songs.filter(song => {
       return (
@@ -153,7 +153,7 @@ class SongIndex extends React.Component {
       );
     }
 
-    if (nextProps.query !== this.props.query) {
+    if ((nextProps.query !== this.props.query) && (nextProps.query !== "")) {
       this.props.fetchAllSongs().then(
         () => {
           this.setState({ filteredSongs: this.searchedSongs() });

@@ -30,6 +30,10 @@ class Navbar extends React.Component {
     if (nextProps.query !== this.props.query) {
       this.props.history.push('/api/search');
     }
+
+    if (nextProps.query === "" && this.props.query !== "") {
+      this.props.history.goBack();
+    }
   }
 
   setSearch(e) {
