@@ -30,8 +30,6 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt'
-gem 'pry-rails'
-gem 'annotate'
 gem 'figaro'
 gem "paperclip", "~> 5.0.0.beta1"
 gem 'aws-sdk', '>= 2.0'
@@ -58,6 +56,7 @@ group :development do
   #LiveReload
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'rack-livereload'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
