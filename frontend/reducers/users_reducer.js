@@ -19,8 +19,11 @@ const usersReducer = (state = initialState, action) => {
 
   switch(action.type) {
     case RECEIVE_USERS:
-      newState = merge({}, state);
-
+      newState = {
+        entities: {},
+        currentUser: state.currentUser
+      };
+      
       action.users.forEach(user => {
         newState.entities[user.id] = {
           id: user.id,

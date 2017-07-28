@@ -13,6 +13,11 @@
   color: $lightest-black;
 }
 
+.show-song-time {
+  color: $lightest-black;
+  font-size: 20px;
+}
+
 .show-song-artist:hover {
   text-decoration: underline;
 }
@@ -95,7 +100,7 @@
   height: 70px;
   background: $white;
   border: 0.1px solid $black;
-  margin-top: 15px;
+  margin-top: 135px;
 }
 
 .submit-comment-button {
@@ -104,4 +109,12 @@
   color: $white;
   padding-left: 60px;
   padding-right: 60px;
+}
+
+.show-comments-header {
+  font-family: $sans-serif;
+  border-bottom: 1px solid $dark-orange;
+  color: $dark-orange;
+  font-size: 40px;
+  padding: 3px;
 }

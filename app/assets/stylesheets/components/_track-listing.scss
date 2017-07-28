@@ -142,10 +142,6 @@ select {
 .indiv-song-background:hover {
   opacity: 0.8;
 
-  .track-likes {
-    visibility: hidden;
-  }
-
   .liked-status {
     visibility: hidden;
   }
@@ -190,4 +186,8 @@ select {
   color: $dark-orange;
   border-bottom: 1px solid $dark-orange;
   cursor: pointer;
+}
+
+.hide-genres {
+  visibility: hidden;
 }

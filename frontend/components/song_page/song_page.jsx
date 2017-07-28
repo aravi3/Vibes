@@ -13,28 +13,12 @@ class SongPage extends React.Component {
     };
 
     this.renderAudioPlayer = this.renderAudioPlayer.bind(this);
-    this.addCommentAudio = this.addCommentAudio.bind(this);
     this.addCommentBox = this.addCommentBox.bind(this);
     this.setComment = this.setComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.openUploadModal = this.openUploadModal.bind(this);
     this.renderSongDetails = this.renderSongDetails.bind(this);
-  }
-
-  addCommentAudio(body) {
-    if (!this.props.loggedIn) {
-      window.globalSignupModal();
-      return;
-    }
-
-    let comment = {
-      body: body,
-      user_id: this.props.currentUser.id,
-      song_id: parseInt(this.props.match.params.songId)
-    };
-
-    this.props.createComment(comment);
   }
 
   setComment(e) {
@@ -74,10 +58,9 @@ class SongPage extends React.Component {
 
   componentDidMount() {
     this.props.fetchSong(parseInt(this.props.match.params.songId));
-
     this.props.fetchAllComments(parseInt(this.props.match.params.songId));
-
     this.props.fetchAllUsers();
+    window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {
@@ -92,14 +75,13 @@ class SongPage extends React.Component {
       width: '600px',
       height: '500px',
       opacity: '0.95',
-      marginRight: '50px'
+      marginRight: '50px',
+      marginBottom: '10px'
     };
 
     return (
       <Audio
         style={audioStyles}
-        comment={true}
-        onCommentSubmit={this.addCommentAudio}
         fullPlayer={true}
         autoPlay={true}
         playlist={[{name: this.props.song[0].title, src: this.props.song[0].track, img: this.props.song[0].image, comments: []}]}
@@ -113,8 +95,9 @@ class SongPage extends React.Component {
       <span className="show-song-info">
         {this.props.song[0].title}
         <br />
-          <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.props.song[0].user_id}`}>{this.props.song[0].artist}</Link>
-        </span>
+        <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.props.song[0].user_id}`}>{this.props.song[0].artist}</Link></span>
+        <br />
+        <span className="show-song-time">uploaded {this.props.song[0].time}</span>
         <br />
         {(this.props.song[0].user_id === this.props.currentUser.id) ?
           <div>
@@ -155,6 +138,8 @@ class SongPage extends React.Component {
 
           <div className="comments-section">
             <ul className="show-comments">
+              <span className="show-comments-header">Comments</span>
+              <br /><br /><br /><br />
               {comments}
             </ul>
 
@@ -168,7 +153,7 @@ class SongPage extends React.Component {
           </div>
         </li>
         <li>
-          <br /><br /><br /><br /><br /><br /><br /><br />
+          <br /><br /><br />
           {this.props.song[0] ? this.renderSongDetails() : ""}
         </li>
       </ul>

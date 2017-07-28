@@ -40,7 +40,6 @@ class Home extends React.Component {
           </ul>
           <div className="bottom-image">
             <h2 className="bottom-image-sub"><span className="bottom-image-text">Save tracks, <br /> connect with fans, <br /> and share your sounds</span></h2>
-            <button onClick={this.openSignupModal} className="bottom-image-button">Create account</button>
           </div>
         </div>
       </div>

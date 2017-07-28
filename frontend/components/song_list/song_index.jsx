@@ -10,8 +10,6 @@ class SongIndex extends React.Component {
       type: "all"
     };
 
-    this.all = true;
-
     this.renderSongIndex = this.renderSongIndex.bind(this);
     this.showSongPage = this.showSongPage.bind(this);
     this.playSong = this.playSong.bind(this);
@@ -24,13 +22,10 @@ class SongIndex extends React.Component {
 
   allSongs() {
     this.setState({ type: "all" });
-    this.all = true;
     this.setState({ filteredSongs: this.props.songs });
   }
 
   searchedSongs() {
-    //this.setState({ type: "search" });
-
     let filteredSongs = this.props.songs.filter(song => {
       return (
         song.title.toLowerCase().includes(this.props.query) ||
@@ -45,7 +40,6 @@ class SongIndex extends React.Component {
 
   likedSongs() {
     this.setState({ type: "liked" });
-    this.all = false;
     let likedIds = this.props.likes.map(like => like.song_id);
 
     let filteredSongs = this.props.songs.filter(song => {
@@ -268,7 +262,13 @@ class SongIndex extends React.Component {
                   <option value="All">All</option>
                   {genres}
                 </select>
-                : "" }
+                :
+                <select className="hide-genres">
+                  <option value="invalid">Filter by genre</option>
+                  <option value="All">All</option>
+                  {genres}
+                </select>
+              }
 
               <br /><br /><br /><br /><br />
 

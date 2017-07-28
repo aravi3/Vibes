@@ -6,3 +6,4 @@ json.artist song.artist
 json.track song.track.url
 json.image song.image.url
 json.likes song.likes.count
+json.time time_ago_in_words(song.created_at)

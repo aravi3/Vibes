@@ -18,9 +18,7 @@
 .logo {
   margin-left: 115px;
   width: 125px;
-  height: 41px;
-  border-bottom: 2px solid $black;
-  border-top: 2px solid $black;
+  height: 39px;
 }
 
 .logo:hover {
@@ -49,6 +47,7 @@
   padding: 2px;
   color: $black;
   font-family: $sans-serif;
+  padding-left: 5px;
 }
 
 .search-bar input[type="text"] {

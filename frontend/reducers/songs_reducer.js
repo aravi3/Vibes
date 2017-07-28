@@ -17,7 +17,10 @@ const songsReducer = (state = initialState, action) => {
 
   switch(action.type) {
     case RECEIVE_SONGS:
-      newState = merge({}, state);
+      newState = {
+        entities: {},
+        currentSong: state.currentSong
+      };
 
       action.songs.forEach(song => {
         newState.entities[song.id] = {
@@ -28,7 +31,8 @@ const songsReducer = (state = initialState, action) => {
           artist: song.artist,
           track: song.track,
           image: song.image,
-          likes: song.likes
+          likes: song.likes,
+          time: song.time
         };
       });
 
@@ -44,7 +48,8 @@ const songsReducer = (state = initialState, action) => {
         artist: action.song.artist,
         track: action.song.track,
         image: action.song.image,
-        likes: action.song.likes
+        likes: action.song.likes,
+        time: action.song.time
       };
 
       newState.currentSong = action.song.id;
@@ -64,7 +69,8 @@ const songsReducer = (state = initialState, action) => {
         artist: action.song.artist,
         track: action.song.track,
         image: action.song.image,
-        likes: action.song.likes
+        likes: action.song.likes,
+        time: action.song.time
       };
 
       return newState;
