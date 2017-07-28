@@ -190,7 +190,7 @@ class SongIndex extends React.Component {
 
               <button onClick={this.showSongPage(song.id)} key={`track-listing-button-${idx}`}>
                 <div style={{backgroundImage: `url(${song.image})`}} className="track-listing-image" key={`track-listing-image-${idx}`}>
-                  <img onClick={this.playSong(song)} className="play-button-index" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                  <img onClick={this.playSong(song)} className="play-button-index" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
                 </div>
               </button>
 
@@ -202,7 +202,7 @@ class SongIndex extends React.Component {
                 <Link to={`/api/songs/${song.id}`} className="song-title">{song.title}</Link>
               </span>
 
-              {(likeId && this.state.type !== "liked") ? <img className="liked-status" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501122479/check_cream_jemohy.png" /> : ""}
+              {(likeId && this.state.type !== "liked") ? <img className="liked-status" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1501122479/check_cream_jemohy.png" /> : ""}
               <span onClick={this.toggleLike(likeId, song.id)} className="like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>
 
               <span className="track-likes">{song.likes}</span>

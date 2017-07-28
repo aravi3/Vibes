@@ -107,13 +107,13 @@ class UserSongs extends React.Component {
 
             <button onClick={this.showSongPage(song.id)} key={`user-track-listing-button-${idx}`}>
               <div style={{backgroundImage: `url(${song.image})`}} className="user-track-listing-image" key={`user-track-listing-image-${idx}`}>
-                <img onClick={this.playSong(song)} className="user-play-button-index" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                <img onClick={this.playSong(song)} className="user-play-button-index" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
               </div>
             </button>
 
             <Link to={`/api/songs/${song.id}`} className="user-song-details">{song.title}</Link>
 
-            {likeId ? <img className="user-liked-status" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501122479/check_cream_jemohy.png" /> : ""}
+            {likeId ? <img className="user-liked-status" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1501122479/check_cream_jemohy.png" /> : ""}
             <span onClick={this.toggleLike(likeId, song.id)} className="user-like-action">{likeId ? <span>UNLIKE</span> : <span>LIKE</span>}</span>
 
             <span className="user-track-likes">{song.likes}</span>

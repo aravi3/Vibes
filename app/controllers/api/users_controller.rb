@@ -11,8 +11,8 @@ class Api::UsersController < ApplicationController
     if @user.save
       @profile = Profile.create!(
         user_id: @user.id,
-        profile_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg",
-        cover_img: "http://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg")
+        profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg",
+        cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg")
 
       login!(@user)
       render 'api/users/show'
