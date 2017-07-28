@@ -64,7 +64,7 @@ class SignupModal extends React.Component {
 
   render() {
     return (
-      <div className="nav-button last-button">
+      <div className="nav-button">
         <button onClick={this.openModal}>Create Account</button>
 
         <Modal

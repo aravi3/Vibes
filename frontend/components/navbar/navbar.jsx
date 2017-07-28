@@ -113,6 +113,7 @@ class Navbar extends React.Component {
           <Link to="/api/songs" className="nav-button">Discover</Link>
           <LoginModal clearErrors={this.props.clearErrors}/>
           <SignupModal clearErrors={this.props.clearErrors}/>
+          <a href='http://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
         </li>
       </ul>
     );
@@ -136,7 +137,8 @@ class Navbar extends React.Component {
           <Link to={`/api/users/${this.props.currentUser.id}`} className="nav-button">{this.props.currentUser.username}</Link>
           <Link to="/api/songs" className="nav-button">Discover</Link>
           <UploadModal clearErrors={this.props.clearErrors}/>
-          <button className="nav-button last-button" onClick={this.logoutUser}>Log Out</button>
+          <button className="nav-button" onClick={this.logoutUser}>Log Out</button>
+          <a href='http://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
         </li>
       </ul>
     );
