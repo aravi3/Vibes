@@ -47,7 +47,9 @@ class SongPage extends React.Component {
 
   deleteSong(id) {
     return e => {
-      this.props.deleteSong(id);
+      this.props.deleteSong(id).then(
+        () => this.props.history.push('/')
+      );
     };
   }
 
