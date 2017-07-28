@@ -13,6 +13,7 @@ module Vibes
     # -- all .rb files in that directory are automatically loaded.
 
     config.paperclip_defaults = {
+      :s3_protocol => :https,
       :s3_host_name => "s3-#{ENV["s3_region"]}.amazonaws.com",
       :storage => :s3,
       :s3_credentials => {
