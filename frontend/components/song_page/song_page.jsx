@@ -39,6 +39,7 @@ class SongPage extends React.Component {
     };
 
     this.props.createComment(comment);
+    this.setState({ comment: "" });
   }
 
   deleteComment(id) {
@@ -63,6 +64,25 @@ class SongPage extends React.Component {
     this.props.fetchAllComments(parseInt(this.props.match.params.songId));
     this.props.fetchAllUsers();
     window.scrollTo(0, 0);
+
+    if (this.audioComponent) {
+      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-skip-to-next'));
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.song[0]) {
+      if (nextProps.song[0].title !== this.props.song[0].title) {
+        this.props.fetchSong(parseInt(this.props.match.params.songId));
+        this.props.fetchAllComments(parseInt(this.props.match.params.songId));
+        this.props.fetchAllUsers();
+        window.scrollTo(0, 0);
+      }
+    }
+
+    if (this.audioComponent) {
+      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-skip-to-next'));
+    }
   }
 
   componentWillUnmount() {
@@ -85,7 +105,7 @@ class SongPage extends React.Component {
       <Audio
         style={audioStyles}
         fullPlayer={true}
-        autoPlay={true}
+        autoPlay={false}
         playlist={[{name: this.props.song[0].title, src: this.props.song[0].track, img: this.props.song[0].image, comments: []}]}
         ref={audioComponent => {this.audioComponent = audioComponent;}}
       />
@@ -146,7 +166,7 @@ class SongPage extends React.Component {
             </ul>
 
             <div>
-              <textarea onChange={this.setComment} className="submit-comment"></textarea>
+              <textarea value={this.state.comment} onChange={this.setComment} className="submit-comment"></textarea>
               <br />
               <center>
                 <button onClick={this.addCommentBox} className="submit-comment-button">Submit Comment</button>

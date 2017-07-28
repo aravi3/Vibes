@@ -73,10 +73,6 @@ class SongIndex extends React.Component {
   }
 
   filterGenre(e) {
-    if (e.target.value === "invalid") {
-      return;
-    }
-
     let filteredSongs;
 
     if (this.state.type === "all") {
@@ -226,7 +222,7 @@ class SongIndex extends React.Component {
 
   render() {
     let genres = this.props.genres.map((genre, idx) => {
-      return (<option key={`genre-track-listing-${idx}`} value={genre.id}>{genre.name}</option>);
+      return (<option key={`genre-track-listing-${idx}`} onClick={this.filterGenre} className="w3-bar-item w3-button" value={genre.id}>{genre.name}</option>);
     });
 
     return (
@@ -257,18 +253,24 @@ class SongIndex extends React.Component {
               <br /><br /><br /><br /><br /><br />
 
               {!this.props.search ?
-                <select onChange={this.filterGenre}>
-                  <option value="invalid">Filter by genre</option>
-                  <option value="All">All</option>
-                  {genres}
-                </select>
+                <div className="w3-dropdown-hover">
+                  <button className="w3-button">Filter by genre</button>
+                  <div className="w3-dropdown-content w3-bar-block w3-border">
+                    <option onClick={this.filterGenre} value="All" className="w3-bar-item w3-button">All</option>
+                    {genres}
+                  </div>
+                </div>
                 :
-                <select className="hide-genres">
-                  <option value="invalid">Filter by genre</option>
-                  <option value="All">All</option>
-                  {genres}
-                </select>
-              }
+                <div className="hide-genres">
+                  <div className="w3-dropdown-hover">
+                    <button className="w3-button">Filter by genre</button>
+                    <div className="w3-dropdown-content w3-bar-block w3-border">
+                      <option onClick={this.filterGenre} value="All" className="w3-bar-item w3-button">All</option>
+                      {genres}
+                    </div>
+                  </div>
+                </div>}
+
 
               <br /><br /><br /><br /><br />
 

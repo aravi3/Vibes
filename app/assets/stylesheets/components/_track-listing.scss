@@ -191,3 +191,11 @@ select {
 .hide-genres {
   visibility: hidden;
 }
+
+.w3-dropdown-hover {
+  background: $black;
+  color: $white;
+  font-family: $sans-serif;
+  margin-right: 11px;
+  text-align: center;
+}
