@@ -33,7 +33,7 @@ class TrendingSongs extends React.Component {
     let firstRow = this.props.songs.slice(0, 4).map((song, idx) => {
       return (<button onClick={this.showSongPage(song.id)} key={`trending-upper-button-${idx}`}>
                 <div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-upper-${idx}`}>
-                  <img onClick={this.playSong(song)} className="play-button-trending" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                  <img onClick={this.playSong(song)} className="play-button-trending" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
                 </div>
               </button>);
     });
@@ -41,7 +41,7 @@ class TrendingSongs extends React.Component {
     let secondRow = this.props.songs.slice(4, 8).map((song, idx) => {
       return (<button onClick={this.showSongPage(song.id)} key={`trending-lower-button-${idx}`}>
                 <div style={{backgroundImage: `url(${song.image})`}} className="trending-songs" key={`trending-lower-${idx}`}>
-                  <img onClick={this.playSong(song)} className="play-button-trending" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
+                  <img onClick={this.playSong(song)} className="play-button-trending" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1500611639/play_button_s6vhyu.png"/>
                 </div>
               </button>);
     });

@@ -98,7 +98,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
         </li>
 
         <li>
@@ -113,7 +113,7 @@ class Navbar extends React.Component {
           <Link to="/api/songs" className="nav-button">Discover</Link>
           <LoginModal clearErrors={this.props.clearErrors}/>
           <SignupModal clearErrors={this.props.clearErrors}/>
-          <a href='http://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
+          <a href='https://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
         </li>
       </ul>
     );
@@ -123,7 +123,7 @@ class Navbar extends React.Component {
     return (
       <ul className="main-nav">
         <li>
-          <img onClick={this.redirectHome} className="logo" src="http://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
+          <img onClick={this.redirectHome} className="logo" src="https://res.cloudinary.com/dnj5rmvun/image/upload/v1501127917/logo_blackground_e7wfgu.png" alt="logo"/>
         </li>
 
         <li>
@@ -138,7 +138,7 @@ class Navbar extends React.Component {
           <Link to="/api/songs" className="nav-button">Discover</Link>
           <UploadModal clearErrors={this.props.clearErrors}/>
           <button className="nav-button" onClick={this.logoutUser}>Log Out</button>
-          <a href='http://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
+          <a href='https://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
         </li>
       </ul>
     );
