@@ -2,7 +2,7 @@
 
 [Vibes live][heroku]
 
-[heroku]: https://vibes21.herokuapp.com/#/
+[heroku]: http://www.vibes-music.site/#/
 
 Vibes is a full-stack music management application inspired by SoundCloud. It uses
 React.js with a Redux architecture on the frontend and Ruby on Rails in conjunction
