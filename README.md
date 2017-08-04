@@ -8,6 +8,8 @@ Vibes is a full-stack music management application inspired by SoundCloud. It us
 React.js with a Redux architecture on the frontend and Ruby on Rails in conjunction
 with a PostgreSQL database on the backend.
 
+![MainPic](http://res.cloudinary.com/dnj5rmvun/image/upload/v1501870092/main_screen_hdooyz.png)
+
 ## Features & Implementation
 
 ### Music Management and Personalization
