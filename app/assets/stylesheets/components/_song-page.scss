@@ -1,3 +1,13 @@
+.song-page-container .full-audio-player div.audioElements__mainPlayer___1XqiC {
+  visibility: hidden;
+  display: none;
+}
+
+.fa-play-circle-o:hover {
+  cursor: pointer;
+  color: $dark-orange;
+}
+
 .full-audio-player {
   display: flex;
   flex-direction: column;

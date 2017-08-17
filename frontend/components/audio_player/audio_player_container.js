@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import AudioPlayer from './audio_player';
+import { fetchAllSongs } from '../../actions/song_actions';
 import { selectAllSongs, selectPlaylist } from '../../reducers/selectors';
 
 const mapStateToProps = (state) => {
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchAllSongs: () => dispatch(fetchAllSongs())
   };
 };
 

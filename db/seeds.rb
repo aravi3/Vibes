@@ -17,7 +17,7 @@ profile2 = Profile.create!(user_id: user2.id, profile_img: "https://res.cloudina
 profile3 = Profile.create!(user_id: user3.id, profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
 profile4 = Profile.create!(user_id: user4.id, profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
 profile5 = Profile.create!(user_id: user5.id, profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934024/prof-pic_dgrkzf.jpg", cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500934040/cover-pic_o9dxb3.jpg", description: "Demo account for Vibes. Feel free to update the profile details!")
-profile6 = Profile.create!(user_id: user6.id, profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500936797/my_prof_yiqd88.jpg", cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500936790/my_cover_kpimp8.jpg", description: "Creator of Vibes. Feel free to update the profile details!")
+profile6 = Profile.create!(user_id: user6.id, profile_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500936797/my_prof_yiqd88.jpg", cover_img: "https://res.cloudinary.com/dnj5rmvun/image/upload/v1500936790/my_cover_kpimp8.jpg", description: "Creator of Vibes!")
 
 
 genre1 = Genre.create!(name: "Electronic")

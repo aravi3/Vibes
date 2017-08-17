@@ -86,7 +86,7 @@ class LoginForm extends React.Component {
 
         <center>
           <button disabled={this.state.loading} className="splash-button" onClick={this.loginUser}>
-            {this.state.loading ? <div className="loader"></div> : "Log in"}
+            {this.state.loading ? <div className="loader-form"></div> : "Log in"}
           </button>
         </center>
       </form>

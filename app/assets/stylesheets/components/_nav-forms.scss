@@ -55,10 +55,24 @@ input[type="password"] {
   background-size: 217px 200px;
 }
 
-.loader {
+.loader-upload {
   position: absolute;
   top: 55px;
-  left: 65px;
+  left: 76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 60%;
+  border-top: 16px solid #ff5d00;
+  border-bottom: 16px solid #ff5d00;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+.loader-form {
+  position: absolute;
+  top: 55px;
+  left: 90px;
   border: 16px solid #f3f3f3;
   border-radius: 60%;
   border-top: 16px solid #ff5d00;

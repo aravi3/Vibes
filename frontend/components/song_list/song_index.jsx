@@ -213,9 +213,17 @@ class SongIndex extends React.Component {
       );
     });
 
+    if (this.state.type === "liked" && this.props.likes.length === 0) {
+      return (
+        <center>
+          <span className='no-liked-songs'>You have not liked any songs yet!</span>
+        </center>
+      );
+    }
+
     return (
       <ul className="index-listing-container">
-          {songs}
+        {songs}
       </ul>
     );
   }
@@ -235,7 +243,6 @@ class SongIndex extends React.Component {
             <li>
               {this.props.search ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} className="explore-header">Search Results</span> :
                 (this.state.type !== "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.allSongs} className="explore-header">Discover</span> : <span onClick={this.allSongs} className="explore-header">Discover</span>)}
-
 
               {(this.props.loggedIn && !this.props.search) ? (this.state.type === "liked" ? <span style={{color: '#c64800', borderBottom: '1px solid #c64800'}} onClick={this.likedSongs} className="explore-header">Likes</span> : <span onClick={this.likedSongs} className="explore-header">Likes</span>) : ""}
 

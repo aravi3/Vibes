@@ -103,7 +103,7 @@ class SignupForm extends React.Component {
 
         <center>
           <button disabled={this.state.loading} className="splash-button" onClick={this.signupUser}>
-            {this.state.loading ? <div className="loader"></div> : "Create account"}
+            {this.state.loading ? <div className="loader-form"></div> : "Create account"}
           </button>
         </center>
       </form>

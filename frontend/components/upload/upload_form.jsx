@@ -131,7 +131,7 @@ class UploadForm extends React.Component {
         <section className="upload-form">
           <div className="upload-form-left">
             <div style={{backgroundImage: `url(${this.state.image_preview})`}} className="upload-image">
-              {this.state.loading ? <div className="loader"></div> : ""}
+              {this.state.loading ? <div className="loader-upload"></div> : ""}
             </div>
 
             <br />

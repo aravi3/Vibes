@@ -9,16 +9,23 @@ class SongPage extends React.Component {
     super(props);
 
     this.state = {
-      comment: ""
+      comment: "",
+      showSong: undefined
     };
 
     this.renderAudioPlayer = this.renderAudioPlayer.bind(this);
+    this.playSong = this.playSong.bind(this);
     this.addCommentBox = this.addCommentBox.bind(this);
     this.setComment = this.setComment.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
     this.openUploadModal = this.openUploadModal.bind(this);
     this.renderSongDetails = this.renderSongDetails.bind(this);
+  }
+
+  playSong(e) {
+    e.preventDefault();
+    this.props.receiveSong(this.state.showSong);
   }
 
   setComment(e) {
@@ -49,7 +56,7 @@ class SongPage extends React.Component {
   deleteSong(id) {
     return e => {
       this.props.deleteSong(id).then(
-        () => this.props.history.push('/')
+        () => this.props.history.push('/api/songs')
       );
     };
   }
@@ -60,43 +67,37 @@ class SongPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchSong(parseInt(this.props.match.params.songId));
+    // this.props.fetchSong(parseInt(this.props.match.params.songId));
+    this.props.fetchAllSongs().then(
+      resp => {
+        let showSong = this.props.songs.filter(song => {
+          return song.id === parseInt(this.props.match.params.songId);
+        });
+
+        this.setState({ showSong: showSong[0] });
+      }
+    );
     this.props.fetchAllComments(parseInt(this.props.match.params.songId));
     this.props.fetchAllUsers();
     window.scrollTo(0, 0);
-
-    if (this.audioComponent) {
-      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-skip-to-next'));
-    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.song[0]) {
-      if (nextProps.song[0].title !== this.props.song[0].title) {
-        this.props.fetchSong(parseInt(this.props.match.params.songId));
-        this.props.fetchAllComments(parseInt(this.props.match.params.songId));
-        this.props.fetchAllUsers();
-        window.scrollTo(0, 0);
-      }
-    }
-
-    if (this.audioComponent) {
-      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-skip-to-next'));
-    }
-  }
-
-  componentWillUnmount() {
-    if (this.audioComponent) {
-      ReactDOM.findDOMNode(this.audioComponent).dispatchEvent(new Event('audio-pause'));
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.songs[0]) {
+  //     if (nextProps.songs[0].title !== this.props.songs[0].title) {
+  //       this.props.fetchSong(parseInt(this.props.match.params.songId));
+  //       this.props.fetchAllComments(parseInt(this.props.match.params.songId));
+  //       this.props.fetchAllUsers();
+  //       window.scrollTo(0, 0);
+  //     }
+  //   }
+  // }
 
   renderAudioPlayer() {
     const audioStyles = {
-      backgroundColor: 'white',
+      backgroundColor: 'transparent',
       width: '600px',
       height: '500px',
-      opacity: '0.95',
       marginRight: '50px',
       marginBottom: '10px'
     };
@@ -106,28 +107,28 @@ class SongPage extends React.Component {
         style={audioStyles}
         fullPlayer={true}
         autoPlay={false}
-        playlist={[{name: this.props.song[0].title, src: this.props.song[0].track, img: this.props.song[0].image, comments: []}]}
-        ref={audioComponent => {this.audioComponent = audioComponent;}}
+        playlist={[{name: this.state.showSong.title, src: this.state.showSong.track, img: this.state.showSong.image, comments: []}]}
       />
     );
   }
 
   renderSongDetails() {
+    console.log(this.state.showSong);
     return (
       <span className="show-song-info">
-        {this.props.song[0].title}
+        <i onClick={this.playSong} className="fa fa-play-circle-o fa-lg"></i> {this.state.showSong.title}
         <br />
-        <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.props.song[0].user_id}`}>{this.props.song[0].artist}</Link></span>
+        <span className="by">by </span><span className="show-song-artist"><Link to={`/api/users/${this.state.showSong.user_id}`}>{this.state.showSong.artist}</Link></span>
         <br />
-        <span className="show-song-time">uploaded {this.props.song[0].time}</span>
+        <span className="show-song-time">uploaded {this.state.showSong.time} ago</span>
         <br />
-        {(this.props.song[0].user_id === this.props.currentUser.id) ?
+        {(this.state.showSong.user_id === this.props.currentUser.id) ?
           <div>
             <button onClick={this.openUploadModal} className="show-modify-button">
               Edit song
             </button>
             <br />
-            <button onClick={this.deleteSong(this.props.song[0].id)} className="show-modify-button">
+            <button onClick={this.deleteSong(this.state.showSong.id)} className="show-modify-button">
               Delete song
             </button>
           </div> : "" }
@@ -154,9 +155,7 @@ class SongPage extends React.Component {
     return (
       <ul className="song-page-container">
         <li className="full-audio-player">
-          {this.props.song[0] ? this.renderAudioPlayer() : ""}
-
-          <br />
+          {this.state.showSong ? this.renderAudioPlayer() : ""}
 
           <div className="comments-section">
             <ul className="show-comments">
@@ -176,7 +175,7 @@ class SongPage extends React.Component {
         </li>
         <li>
           <br /><br /><br />
-          {this.props.song[0] ? this.renderSongDetails() : ""}
+          {this.state.showSong ? this.renderSongDetails() : ""}
         </li>
       </ul>
     );

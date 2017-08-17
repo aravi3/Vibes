@@ -56,6 +56,7 @@ const songsReducer = (state = initialState, action) => {
 
       return newState;
     case SHOW_SONG:
+      // newState = merge({}, state);
       newState = {
         entities: {},
         currentSong: undefined

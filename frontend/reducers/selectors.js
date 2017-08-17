@@ -15,22 +15,33 @@ export const selectAllSongs = (songs) => {
 };
 
 export const selectPlaylist = (songs, currentSong) => {
-  let firstSong = [];
-  let remainder = [];
+  let firstHalf = [];
+  let secondHalf = [];
+  let reachedCurrentSong = false;
 
   if (currentSong) {
     selectAllSongs(songs).forEach(song => {
       if (song.id === currentSong) {
-        firstSong.push({
+        reachedCurrentSong = true;
+      }
+
+      if (reachedCurrentSong) {
+        firstHalf.push({
           name: song.title,
           src: song.track
         });
       }
     });
 
+    reachedCurrentSong = false;
+
     selectAllSongs(songs).forEach(song => {
-      if (song.id !== currentSong) {
-        remainder.push({
+      if (song.id === currentSong) {
+        reachedCurrentSong = true;
+      }
+
+      if (!reachedCurrentSong) {
+        secondHalf.push({
           name: song.title,
           src: song.track
         });
@@ -38,7 +49,31 @@ export const selectPlaylist = (songs, currentSong) => {
     });
   }
 
-  return firstSong.concat(remainder);
+  return firstHalf.concat(secondHalf);
+  // let firstSong = [];
+  // let remainder = [];
+  //
+  // if (currentSong) {
+  //   selectAllSongs(songs).forEach(song => {
+  //     if (song.id === currentSong) {
+  //       firstSong.push({
+  //         name: song.title,
+  //         src: song.track
+  //       });
+  //     }
+  //   });
+  //
+  //   selectAllSongs(songs).forEach(song => {
+  //     if (song.id !== currentSong) {
+  //       remainder.push({
+  //         name: song.title,
+  //         src: song.track
+  //       });
+  //     }
+  //   });
+  // }
+  //
+  // return firstSong.concat(remainder);
 };
 
 export const selectAllComments = (comments) => {
