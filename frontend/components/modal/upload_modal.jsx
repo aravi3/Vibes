@@ -16,8 +16,8 @@ const customStyles = {
   content : {
     position                   : 'absolute',
     width                      : '625px',
-    top                        : '20%',
-    left                       : '20%',
+    top                        : '12%',
+    left                       : '28%',
     right                      : 'auto',
     bottom                     : 'auto',
     border                     : '1px solid #ccc',
