@@ -4,7 +4,7 @@
 
 [heroku]: http://www.vibes-music.site/#/
 
-Vibes is a full-stack music management application inspired by SoundCloud. It uses
+Vibes is a full stack music management application inspired by SoundCloud. It uses
 React.js with a Redux architecture on the frontend and Ruby on Rails in conjunction
 with a PostgreSQL database on the backend.
 
@@ -16,7 +16,7 @@ with a PostgreSQL database on the backend.
 
 Users can upload song files and an associated image to Vibes. In the backend, song
 and image files are stored using Amazon Web Service's cloud service. The paperclip
-gem takes care of redirecting file uploads to AWS.
+gem takes care of redirecting file uploads to Amazon S3.
 
 Users can also create custom profiles with images and descriptions that will allow others in
 the community to see, play, and like their songs. Each user also has their own "Likes"
@@ -65,9 +65,7 @@ const filteredSongs = this.props.songs.filter(song => {
 ### Audio Persistence
 
 If a user clicks play on a song, an audio bar will appear at the bottom that will
-then persist throughout the user's time at the website. If a user visits the song
-show page, however, there is a separate audio component that only lives as long as
-the user stays on the show page.
+then persist throughout the user's time at the website.
 
 The following is the state shape of the songs reducer. The audio bar component
 watches `currentSong` to know when to render:
