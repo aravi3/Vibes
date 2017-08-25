@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     this.setUsername = this.setUsername.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.loginUser = this.loginUser.bind(this);
-    this.redirectHome = this.redirectHome.bind(this);
+    // this.refreshPage = this.refreshPage.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,9 +26,10 @@ class LoginForm extends React.Component {
     }
   }
 
-  redirectHome() {
-    this.props.history.push('/');
-  }
+  // refreshPage() {
+  //   // this.props.history.push('/');
+  //   // window.location.reload();
+  // }
 
   setUsername(e) {
     const username = e.target.value ? e.target.value : "";
@@ -57,7 +58,8 @@ class LoginForm extends React.Component {
     };
 
     this.setState({ loading: true });
-    this.props.login(user).then(this.redirectHome);
+    this.props.login(user);
+    // this.props.login(user).then(this.refreshPage);
   }
 
   render() {

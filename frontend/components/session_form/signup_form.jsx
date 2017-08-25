@@ -16,7 +16,7 @@ class SignupForm extends React.Component {
     this.setUsername = this.setUsername.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.signupUser = this.signupUser.bind(this);
-    this.redirectHome = this.redirectHome.bind(this);
+    // this.refreshPage = this.refreshPage.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,9 +28,10 @@ class SignupForm extends React.Component {
     }
   }
 
-  redirectHome() {
-    this.props.history.push('/');
-  }
+  // refreshPage() {
+  //   // this.props.history.push('/');
+  //   // window.location.reload();
+  // }
 
   setEmail(e) {
     const email = e.target.value ? e.target.value : "";
@@ -67,7 +68,8 @@ class SignupForm extends React.Component {
     };
 
     this.setState({ loading: true });
-    this.props.signup(user).then(this.redirectHome);
+    this.props.signup(user);
+    // this.props.signup(user).then(this.refreshPage);
   }
 
   render() {

@@ -87,7 +87,8 @@ class Navbar extends React.Component {
 
     const guestArray = [guest1, guest2, guest3, guest4, guest5];
     const rand = guestArray[Math.floor(Math.random() * guestArray.length)];
-    this.props.login(rand).then(this.redirectHome);
+    this.props.login(rand);
+    // this.props.login(rand).then(this.redirectHome);
   }
 
   redirectHome() {
