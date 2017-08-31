@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchUser, editUser } from '../../actions/session_actions';
-import { selectAllSongs, selectAllUsers } from '../../reducers/selectors';
+import { selectLoggedIn, selectAllSongs, selectAllUsers } from '../../reducers/selectors';
 import Profile from './profile';
 
 const mapStateToProps = (state) => {

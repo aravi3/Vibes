@@ -113,7 +113,6 @@ class SongPage extends React.Component {
   }
 
   renderSongDetails() {
-    console.log(this.state.showSong);
     return (
       <span className="show-song-info">
         <i onClick={this.playSong} className="fa fa-play-circle-o fa-lg"></i> {this.state.showSong.title}
