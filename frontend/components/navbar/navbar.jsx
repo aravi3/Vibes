@@ -139,7 +139,7 @@ class Navbar extends React.Component {
           <Link to="/api/songs" className="nav-button">Discover</Link>
           <UploadModal clearErrors={this.props.clearErrors}/>
           <button className="nav-button" onClick={this.logoutUser}>Log Out</button>
-          <a href='https://www.linkedin.com/in/arvind-ravi-1a6b75ab' className="nav-button last-button">About</a>
+          <a href='https://www.linkedin.com/in/arvind-ravi/' className="nav-button last-button">About</a>
         </li>
       </ul>
     );
